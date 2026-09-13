@@ -96,6 +96,14 @@ footer li{margin-bottom:4px;word-break:break-all}
 footer a{color:var(--accent)}
 .disclaimer{max-width:1080px;margin:18px auto 0;text-align:center;font-size:12px;color:var(--warn);background:var(--warn-soft);border-radius:10px;padding:12px}
 
+/* サイト内ページ切替タブ(fuchu-chiiki サイト全体ナビ。かんたん/詳細トグルとは別物) */
+.site-tabbar{display:flex;gap:0;background:#12202e;padding:0 4px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:11px 20px;font-size:13.5px;font-weight:700;
+  color:#b9c6d1;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+.site-tabbar a.site-tab.is-active{color:#fff;border-bottom-color:#f2b705;background:rgba(255,255,255,.06)}
+.site-tabbar a.site-tab:hover{color:#fff;background:rgba(255,255,255,.08)}
+@media (max-width:600px){.site-tabbar a.site-tab{padding:10px 14px;font-size:12.5px}}
+
 /* かんたん/詳細 モード切替 */
 .mode-toggle-wrap{background:var(--bg);padding:14px 14px 4px;box-shadow:0 2px 8px rgba(18,58,78,.10)}
 .mode-toggle{max-width:420px;margin:0 auto;display:flex;background:#e4ece9;border-radius:30px;padding:4px;gap:4px}
@@ -133,6 +141,10 @@ footer a{color:var(--accent)}
 </style>
 </head>
 <body>
+<nav class="site-tabbar" aria-label="サイト内ページ切替">
+  <a class="site-tab is-active" href="./">📋 地域課題マップ</a>
+  <a class="site-tab" href="./zaisei.html">📊 財政ダッシュボード</a>
+</nav>
 <header class="hero">
   <h1>府中市 8地域の課題マップ<br><span style="font-size:15px;font-weight:400;opacity:.9">都市計画マスタープラン×市議会会議録(2022年4月〜2026年6月・収集済み分)</span></h1>
   <p>分析期間：2022年4月19日〜2026年6月22日(収集済み分。年次比較は参考値)</p>
