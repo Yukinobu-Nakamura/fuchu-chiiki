@@ -8,58 +8,58 @@
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
- color:var(--ink);background:var(--bg);line-height:1.6}
+ color:var(--ink);background:var(--bg);line-height:1.8;font-size:17px}
 header{background:linear-gradient(100deg,var(--red),var(--red-d));color:#fff;padding:22px 26px 18px}
 header .brand{display:flex;align-items:center;gap:12px}
 header .dot{width:14px;height:14px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(255,255,255,.25)}
-header h1{margin:0;font-size:22px;font-weight:800;letter-spacing:.02em}
-header .sub{opacity:.9;font-size:12.5px;margin-top:3px}
-.wrap{max-width:1180px;margin:0 auto;padding:18px}
+header h1{margin:0;font-size:clamp(1.6rem,2.8vw,2.1rem);font-weight:800;letter-spacing:.02em}
+header .sub{opacity:.93;font-size:1rem;margin-top:3px}
+.wrap{max-width:1380px;margin:0 auto;padding:clamp(18px,2.4vw,30px) clamp(16px,3vw,32px) 60px}
 .tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font-size:13.5px;
+.tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:12px 22px;font-size:1rem;min-height:48px;
  font-weight:700;cursor:pointer;color:var(--ink)}
 .tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-wrap:wrap}
-.seg button{border:0;background:#fff;padding:7px 13px;font-size:12.5px;cursor:pointer;color:var(--muted);font-weight:700}
+.seg button{border:0;background:#fff;padding:10px 17px;font-size:.95rem;min-height:44px;cursor:pointer;color:var(--muted);font-weight:700}
 .seg button.on{background:var(--red);color:#fff}
 .subbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
-.subbar .lbl{font-size:12px;color:var(--muted);font-weight:700}
+.subbar .lbl{font-size:.9rem;color:var(--muted);font-weight:700}
 .grid{display:grid;gap:14px}
 .kpis{grid-template-columns:repeat(auto-fit,minmax(158px,1fr))}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,40,.04)}
-.kpi .lab{font-size:12px;color:var(--muted);font-weight:700}
-.kpi .val{font-size:24px;font-weight:800;margin-top:2px}
-.kpi .val small{font-size:12px;font-weight:700;color:var(--muted)}
-.kpi .chg{font-size:11.5px;font-weight:800;margin-top:2px}
+.kpi .lab{font-size:.92rem;color:var(--muted);font-weight:700}
+.kpi .val{font-size:clamp(1.7rem,2.6vw,2.15rem);font-weight:800;margin-top:2px}
+.kpi .val small{font-size:.62em;font-weight:700;color:var(--muted)}
+.kpi .chg{font-size:.86rem;font-weight:800;margin-top:2px}
 .up{color:var(--red)} .down{color:var(--green)} .flat{color:var(--muted)}
-.chart-card h3{margin:0 0 2px;font-size:15px}
-.chart-card .cap{font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.chart-card h3{margin:0 0 4px;font-size:1.12rem}
+.chart-card .cap{font-size:.88rem;color:var(--muted);margin-bottom:8px}
 .two{grid-template-columns:1fr 1fr}
 @media(max-width:820px){.two{grid-template-columns:1fr}}
 svg{width:100%;height:auto;display:block;font-family:inherit}
-.legend{display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:8px;font-size:11.5px}
+.legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:10px;font-size:.88rem}
 .legend span{display:inline-flex;align-items:center;gap:5px;color:#444}
 .legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
 .legend i.ln{width:16px;height:0;border-top-width:3px;border-top-style:solid;border-radius:0}
 .legend i.dash{border-top-style:dashed}
-.note{font-size:11.5px;color:var(--muted);margin-top:10px}
+.note{font-size:.88rem;color:var(--muted);margin-top:10px}
 .tip{position:fixed;pointer-events:none;background:#111826;color:#fff;font-size:12px;padding:6px 9px;
  border-radius:7px;opacity:0;transition:opacity .08s;z-index:9;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.banner{background:#f2fbf6;border:1px solid #bfe6d1;color:#12603f;border-radius:10px;padding:9px 13px;font-size:12.5px;margin-bottom:12px}
-.insight{background:#fff6f8;border:1px solid #f6c9d8;color:#9b2247;border-radius:10px;padding:10px 13px;font-size:12.5px;margin-top:12px}
-.acom{background:#f6faf7;border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:8px 11px;margin-top:9px;font-size:11.5px;color:#374151;overflow-wrap:anywhere;word-break:break-word}
-.acom .src{color:#9aa1ac;font-size:10px;margin-top:3px;word-break:break-all}
+.banner{background:#f2fbf6;border:1px solid #bfe6d1;color:#0f5537;border-radius:12px;padding:15px 19px;font-size:1.02rem;line-height:1.85;margin-bottom:12px}
+.insight{background:#fff6f8;border:1px solid #f6c9d8;color:#9b2247;border-radius:12px;padding:15px 19px;font-size:.98rem;line-height:1.85;margin-top:12px}
+.acom{background:#f6faf7;border-left:4px solid var(--green);border-radius:0 10px 10px 0;padding:12px 15px;margin-top:11px;font-size:.92rem;line-height:1.85;color:#374151;overflow-wrap:anywhere;word-break:break-word}
+.acom .src{color:#9aa1ac;font-size:.78rem;margin-top:3px;word-break:break-all}
 .acom b{color:var(--ink)}
-.acom .hd{font-weight:800;color:var(--green);font-size:11px;margin-bottom:2px}
-footer{max-width:1180px;margin:6px auto 30px;padding:0 18px;color:var(--muted);font-size:11.5px}
+.acom .hd{font-weight:800;color:var(--green);font-size:.86rem;margin-bottom:2px}
+footer{max-width:1380px;margin:8px auto 40px;padding:0 24px;color:var(--muted);font-size:.88rem;line-height:1.95}
 .hidden{display:none}
 .xnav{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:7px 18px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
-.xnav a{text-decoration:none;color:var(--muted);font-weight:700;font-size:12px;padding:5px 11px;border-radius:8px;border:1px solid var(--line);white-space:nowrap}
+.xnav a{text-decoration:none;color:var(--muted);font-weight:700;font-size:.92rem;padding:9px 15px;border-radius:8px;border:1px solid var(--line);white-space:nowrap}
 .xnav a.on{background:var(--red);color:#fff;border-color:var(--red)}
 .xnav a:hover{background:#f0f2f5;color:var(--ink)} .xnav a.on:hover{color:#fff}
 .xnav .lbl{font-size:11px;color:var(--muted);font-weight:800;margin-right:2px}
 .yrbar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 16px;margin:0 0 14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.yrbar .lbl{font-size:12px;color:var(--muted);font-weight:800}
+.yrbar .lbl{font-size:.92rem;color:var(--muted);font-weight:800}
 .range-wrap{position:relative;height:26px;flex:1;min-width:220px;max-width:460px}
 .range-wrap input[type=range]{position:absolute;left:0;top:0;width:100%;height:26px;margin:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none}
 .range-wrap input[type=range]::-webkit-slider-runnable-track{height:0;background:transparent}
@@ -71,12 +71,32 @@ footer{max-width:1180px;margin:6px auto 30px;padding:0 18px;color:var(--muted);f
 
 /* サイト内ページ切替タブ(fuchu-chiiki サイト全体ナビ。既存の.xnav[地域間比較連携]とは別物) */
 .site-tabbar{display:flex;gap:0;background:#12202e;padding:0 4px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:11px 20px;font-size:13.5px;font-weight:700;
+.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:15px 24px;font-size:1rem;font-weight:700;
   color:#b9c6d1;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
 .site-tabbar a.site-tab.is-active{color:#fff;border-bottom-color:#f2b705;background:rgba(255,255,255,.06)}
 .site-tabbar a.site-tab:hover{color:#fff;background:rgba(255,255,255,.08)}
 @media (max-width:600px){.site-tabbar a.site-tab{padding:10px 14px;font-size:12.5px}}
-.public-disclaimer{max-width:1180px;margin:0 auto 26px;padding:0 18px;font-size:11.5px;color:#9b2247;line-height:1.8}
+
+/* かんたん／詳細 の切替（giin ページと共通の作法） */
+.mode-wrap{background:var(--bg);padding:16px clamp(16px,3vw,32px) 6px}
+.mode-toggle{max-width:520px;margin:0 auto;display:flex;background:#e7ece5;
+ border-radius:32px;padding:5px;gap:5px}
+.mode-btn{flex:1;border:none;background:transparent;padding:15px 10px;font-size:1.06rem;
+ font-weight:800;border-radius:28px;color:var(--muted);cursor:pointer;min-height:52px;
+ font-family:inherit;transition:background .15s,color .15s}
+.mode-btn.on{background:var(--red-d);color:#fff;box-shadow:0 2px 8px rgba(51,105,30,.32)}
+.mode-btn:focus-visible{outline:3px solid #e0b464;outline-offset:2px}
+.mode-note{max-width:520px;margin:9px auto 0;text-align:center;font-size:.86rem;color:var(--muted)}
+.s-only{display:none}
+body.simple .s-only{display:block}
+body.simple .d-only{display:none}
+.simple-sec{margin-bottom:34px}
+.simple-sec h2{font-size:clamp(1.35rem,2.2vw,1.6rem);color:var(--red-d);font-weight:800;
+ border-left:7px solid var(--red);padding-left:16px;margin:0 0 18px;line-height:1.45}
+.simple-sec h3{font-size:clamp(1.12rem,1.6vw,1.28rem);color:var(--red-d);font-weight:800;
+ margin:30px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.simple-sec p{font-size:1.06rem;line-height:1.9;margin:.8em 0}
+.public-disclaimer{max-width:1380px;margin:0 auto 30px;padding:0 24px;font-size:.88rem;color:#9b2247;line-height:1.8}
 </style></head><body><nav class="site-tabbar" aria-label="サイト内ページ切替"><a class="site-tab" href="./">📋 地域課題マップ</a><a class="site-tab is-active" href="./zaisei.html">📊 財政ダッシュボード</a><a class="site-tab" href="./giin.html">💴 議員報酬・活動経費</a></nav>
 <header><div class="brand"><span class="dot"></span>
 <div><h1>府中市 財政分析ダッシュボード v2</h1>
@@ -85,7 +105,71 @@ footer{max-width:1180px;margin:6px auto 30px;padding:0 18px;color:var(--muted);f
 <a href="../../../_財政統合/東京都市区_財政比較ダッシュボード.html#from=府中市">🔗 全市区 統合比較</a>
 <a class="on" href="./府中市財政分析ダッシュボード_v2.html">📊 府中市</a>
 </nav>
+<div class="mode-wrap">
+ <div class="mode-toggle" role="tablist" aria-label="表示モード切替">
+  <button type="button" class="mode-btn" data-m="simple" role="tab" aria-selected="false">かんたん</button>
+  <button type="button" class="mode-btn" data-m="detail" role="tab" aria-selected="true">詳細</button>
+ </div>
+ <div class="mode-note" id="mode-note"></div>
+</div>
 <div class="wrap">
+<div class="s-only">
+<section class="simple-sec">
+<h2>府中市のお金のことを、かんたんに</h2>
+<div class="banner">
+府中市が1年で使うお金は、<b>およそ1,329億円</b>です（令和6年度）。<br>
+入ってくるお金は<b>およそ1,372億円</b>なので、<b>入るほうが多い</b>状態です。
+</div>
+<p>このページでは、市が<b>どこからお金を集めて、何に使っているか</b>を、
+20年ぶんのグラフで見られます。</p>
+
+<h3>府中市の家計は、苦しい？</h3>
+<p>結論から言うと、<b>都内でも余裕があるほうです。</b>
+理由は次の3つの数字でわかります。</p>
+<div class="grid kpis" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+<div class="card kpi"><div class="lab">自分で稼げる力（財政力指数）</div>
+ <div class="val">1.26</div>
+ <div class="chg">10年前は1.11。<b>1.0を超えていれば、国からの仕送りなしでやっていける</b>という目安です</div></div>
+<div class="card kpi"><div class="lab">決まった出費の重さ（経常収支比率）</div>
+ <div class="val">81.1<small>%</small></div>
+ <div class="chg">10年前は85.6%。<b>低いほど自由に使えるお金が多い</b>。改善しています</div></div>
+<div class="card kpi"><div class="lab">借金の返済の重さ（実質公債費比率）</div>
+ <div class="val">2.6<small>%</small></div>
+ <div class="chg">10年前は3.8%。<b>18%を超えると国の許可が必要</b>になるので、かなり低い水準です</div></div>
+</div>
+
+<h3>貯金はどれくらい？</h3>
+<p>市の貯金にあたる「基金」は、全部で<b>およそ611億円</b>あります。
+そのうち、<b>災害や急な出費に自由に使える分（財政調整基金）が約80億円</b>。
+残りは、学校を建てる・道路を直すなど<b>使いみちが決まっているお金</b>です。</p>
+
+<h3>借金はどれくらい？</h3>
+<p>市の借金（地方債）は<b>およそ466億円</b>です。
+1年で自由に使えるお金の規模（623億円）と比べると、<b>1年分より少ない</b>水準です。
+ただし10年前の414億円からは増えています。</p>
+
+<h3>グラフを見るときのコツ</h3>
+<p>上の「<b>詳細</b>」ボタンを押すと、20年ぶんのグラフが出ます。
+見るときは次の3つを意識すると、わかりやすくなります。</p>
+<div class="acom"><div class="hd">1. 上がった・下がったより「なぜ」</div>
+グラフの下に、その年に何があったかのメモを付けています。
+コロナの給付金など、一時的な理由で大きく動いている年があります。</div>
+<div class="acom"><div class="hd">2. 金額より「割合」</div>
+物価も人口も変わるので、金額だけを並べても比べにくいことがあります。
+「◯◯比率」という指標のほうが、他の年や他の市とくらべやすい数字です。</div>
+<div class="acom"><div class="hd">3. 会計のルールが途中で変わっている</div>
+平成28年度から国の新しい会計ルールが入りました。
+それより前と後では、同じ名前の数字でも中身がちがうことがあります。</div>
+
+<div class="insight">
+この資料は「府中市の財政は良い」「悪い」とは書いていません。
+<b>数字とその背景をならべるだけ</b>にしています。どう受け止めるかは読む人しだいです。<br>
+数字はすべて、総務省や府中市が公表している資料をもとにしています。
+</div>
+</section>
+</div>
+<div class="d-only">
+
  <div class="banner">📊 <b>府中市の20年</b>：総務省決算カード(H17〜R6)を土台に財政状況資料集で相互検証。決算・予算(当初/補正後)・公会計(BS/PL/CF)を一体で可視化。〔📅 会計区分〕当初予算 vs 決算／〔🏢 公会計〕貸借対照表・行政コスト・資金収支。縦軸は丸い刻み・横軸は毎年表示。数値は出典突合済み。</div>
  <div class="tabs" id="tabs">
   <button class="on" data-t="ind">📊 主要指標の推移</button>
@@ -106,6 +190,7 @@ footer{max-width:1180px;margin:6px auto 30px;padding:0 18px;color:var(--muted);f
  <div id="panel-fund" class="panel hidden"></div>
  <div id="panel-bud" class="panel hidden"></div>
  <div id="panel-pub" class="panel hidden"></div>
+</div>
 </div>
 <footer>出典: 総務省「市町村決算カード」（地方財政状況調査関係資料、団体コード13206）／府中市「財政状況資料集」「財政の概要」「財政白書」「施策の成果」「予算概要・予算書」。<br><br>総務省のコンテンツは「公共データ利用規約（第1.0版）」（CC BY 4.0互換）に基づき利用し、数値の集計・グラフ化の加工を行っています。府中市の公表資料については、掲載数値（事実データ）を集計・作図に利用したもので、本文中の「」部分は著作権法第32条第1項に基づく引用です。グラフはいずれも原典の図表を転載したものではなく、公表数値から独自に作図しています。<br><br>本ページのうち当方が作成した部分（グラフ表現・レイアウト・解説の地の文）は、出典を明記のうえ自由にご利用いただけます。引用部分および原典資料の著作権は各権利者に帰属し、当方は再許諾を行いません。<br><br>本ページの内容について、総務省および府中市が関与・保証するものではありません。金額の縦軸単位＝億円（決算/予算の原典は千円、公会計は円）。</footer><div class="public-disclaimer">本資料は公開情報に基づく政務調査資料であり、府中市の公式見解を示すものではありません。</div>
 <div class="tip" id="tip"></div>
@@ -506,4 +591,28 @@ document.getElementById('tabs').addEventListener('click',e=>{const b=e.target.cl
  upd(false);
 })();
 renderStatic();
-</script></body></html>
+</script>
+
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('.mode-btn'));
+  var note=document.getElementById('mode-note');
+  var TXT={simple:'むずかしい言葉をはぶいて、要点だけを短く読めます',
+           detail:'20年ぶんのグラフと、出典・注記まで載せた完全版です'};
+  function set(m,save){
+    document.body.classList.toggle('simple',m==='simple');
+    btns.forEach(function(b){var on=b.dataset.m===m;
+      b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');});
+    if(note)note.textContent=TXT[m];
+    if(save){try{localStorage.setItem('fuchu-view-mode',m);}catch(e){}}
+    if(m==='detail'&&window.dispatchEvent)window.dispatchEvent(new Event('resize'));
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.m,true);});});
+  var q=(location.search.match(/[?&]mode=(simple|detail)/)||[])[1];
+  var saved=null;try{saved=localStorage.getItem('fuchu-view-mode');}catch(e){}
+  set(q||(saved==='simple'?'simple':'detail'),false);
+})();
+</script>
+
+</body>
+</html>

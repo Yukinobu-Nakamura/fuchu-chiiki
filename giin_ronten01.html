@@ -13,7 +13,15 @@
  --cream:#fdf9ef; --gold:#dcae5c;
  --radius:16px;
  --pad-x:clamp(16px, 3.2vw, 40px);
- --fs:17px;
+ /* 文字階層（段差をはっきりつける。基準=本文18px） */
+ --fs:18px;                                   /* 本文 */
+ --fs-h1:clamp(1.65rem, 3.0vw, 2.25rem);      /* タイトル   30〜40px */
+ --fs-h2:clamp(1.35rem, 2.2vw, 1.65rem);      /* 大項目     24〜30px */
+ --fs-h3:clamp(1.15rem, 1.7vw, 1.32rem);      /* 中項目     21〜24px */
+ --fs-h4:1.08rem;                             /* 小項目     19px */
+ --fs-lead:1.1rem;                            /* リード文   20px */
+ --fs-sub:0.94rem;                            /* 補助・注記 17px */
+ --fs-cap:0.86rem;                            /* キャプション15.5px */
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -25,8 +33,8 @@ body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-
 .site-tabbar{display:flex;background:#12202e;padding:0 var(--pad-x);
  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .site-tabbar::-webkit-scrollbar{display:none}
-.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:14px 22px;
- font-size:.94rem;font-weight:700;color:#b9c6d1;text-decoration:none;
+.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:15px 24px;
+ font-size:1rem;font-weight:700;color:#b9c6d1;text-decoration:none;
  border-bottom:3px solid transparent;white-space:nowrap}
 .site-tabbar a.site-tab.is-active{color:#fff;border-bottom-color:#f2b705;background:rgba(255,255,255,.07)}
 .site-tabbar a.site-tab:hover{color:#fff;background:rgba(255,255,255,.09)}
@@ -39,25 +47,29 @@ header.hero .bc a{color:#e7f5d8;text-decoration:none;font-weight:700;
  display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,.45);
  border-radius:9px;min-height:40px;line-height:1.7}
 header.hero .bc a:hover{background:rgba(255,255,255,.16)}
-header.hero h1{margin:0;font-size:clamp(1.35rem,2.6vw,1.85rem);font-weight:800;
- letter-spacing:.01em;line-height:1.45}
-header.hero .sub{font-size:clamp(.95rem,1.4vw,1.06rem);margin-top:8px;opacity:.95}
+header.hero h1{margin:0;font-size:var(--fs-h1);font-weight:800;
+ letter-spacing:.01em;line-height:1.38}
+header.hero .sub{font-size:var(--fs-lead);margin-top:10px;opacity:.96;line-height:1.7}
 .badge-asof{display:inline-block;background:rgba(255,255,255,.2);padding:5px 13px;
  border-radius:20px;font-size:.82rem;margin-top:12px;margin-right:7px}
 
 /* ── レイアウト */
 .wrap{max-width:1480px;margin:0 auto;padding:clamp(20px,2.6vw,32px) var(--pad-x) 72px}
 section{margin-bottom:clamp(30px,3.6vw,46px)}
-h2.sec{font-size:clamp(1.15rem,1.9vw,1.4rem);color:var(--g-d);
- border-left:6px solid var(--g);padding-left:14px;margin:0 0 16px;line-height:1.5}
-h3.sub{font-size:1.05rem;color:var(--g-d);margin:26px 0 10px}
-p{margin:.7em 0}
+h2.sec{font-size:var(--fs-h2);color:var(--g-d);font-weight:800;
+ border-left:7px solid var(--g);padding-left:16px;margin:0 0 18px;line-height:1.45}
+h3.sub{font-size:var(--fs-h3);color:var(--g-d);font-weight:800;margin:32px 0 12px;
+ line-height:1.5;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h4{font-size:var(--fs-h4);color:var(--ink);font-weight:800;margin:22px 0 8px;line-height:1.55}
+p{margin:.75em 0}
+.lead{font-size:var(--fs-lead);line-height:1.85;color:var(--ink)}
 
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
  padding:clamp(16px,1.8vw,24px);box-shadow:0 1px 3px rgba(20,20,40,.05)}
 .chart-card{margin-bottom:20px}
-.chart-card h3{margin:0 0 4px;font-size:1.06rem;color:var(--ink);line-height:1.5}
-.chart-card .cap{font-size:.84rem;color:var(--muted);margin-bottom:14px;line-height:1.7}
+.chart-card h3{margin:0 0 5px;font-size:var(--fs-h4);color:var(--ink);line-height:1.5;
+ font-weight:800;border:none;padding:0}
+.chart-card .cap{font-size:var(--fs-cap);color:var(--muted);margin-bottom:16px;line-height:1.7}
 svg{width:100%;height:auto;display:block;font-family:inherit}
 .legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:12px;font-size:.84rem}
 .legend span{display:inline-flex;align-items:center;gap:6px;color:var(--sub)}
@@ -65,19 +77,19 @@ svg{width:100%;height:auto;display:block;font-family:inherit}
 
 .grid{display:grid;gap:16px}
 .kpis{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-.kpi .lab{font-size:.85rem;color:var(--muted);font-weight:700}
-.kpi .val{font-size:clamp(1.6rem,2.6vw,2.05rem);font-weight:800;margin-top:4px;
- color:var(--g-d);line-height:1.25}
-.kpi .val small{font-size:.72em;font-weight:700;color:var(--muted)}
-.kpi .sub2{font-size:.84rem;color:var(--muted);margin-top:6px;line-height:1.65}
+.kpi .lab{font-size:var(--fs-sub);color:var(--muted);font-weight:700}
+.kpi .val{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-top:6px;
+ color:var(--g-d);line-height:1.2}
+.kpi .val small{font-size:.66em;font-weight:700;color:var(--muted)}
+.kpi .sub2{font-size:var(--fs-cap);color:var(--muted);margin-top:8px;line-height:1.7}
 .two{grid-template-columns:1fr 1fr}
 
 /* ── 表 */
 .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0}
-table{width:100%;border-collapse:collapse;font-size:.94rem;background:var(--card);
+table{width:100%;border-collapse:collapse;font-size:1rem;background:var(--card);
  border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(20,20,40,.05)}
-caption{text-align:left;font-size:.86rem;color:var(--muted);padding:8px 2px}
-th,td{border:1px solid var(--line);padding:11px 14px;text-align:left;vertical-align:top}
+caption{text-align:left;font-size:var(--fs-cap);color:var(--muted);padding:9px 2px}
+th,td{border:1px solid var(--line);padding:13px 15px;text-align:left;vertical-align:top}
 th{background:#eef3ea;color:var(--g-d);font-weight:700;white-space:nowrap}
 td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 tr.me td{background:#f1f8e9;font-weight:700}
@@ -94,7 +106,7 @@ td.na{color:var(--muted);font-style:italic}
 .issue-no{font-size:.82rem;font-weight:800;color:var(--g);letter-spacing:.07em}
 .issue-title{font-size:clamp(1.12rem,1.8vw,1.32rem);font-weight:800;margin:5px 0 10px;
  color:var(--ink);line-height:1.45}
-.issue-body{font-size:.96rem;color:var(--sub);flex:1;line-height:1.8}
+.issue-body{font-size:1rem;color:var(--sub);flex:1;line-height:1.85}
 .issue-kpi{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
 .issue-kpi span{background:#f1f8e9;color:var(--g-d);border-radius:9px;padding:6px 12px;
  font-size:.84rem;font-weight:700}
@@ -103,6 +115,23 @@ a.attach-link{display:block;margin-top:16px;border:1px solid var(--g);border-rad
  font-weight:800;background:#f4f9ee;min-height:48px;transition:background .15s,color .15s}
 a.attach-link:hover{background:var(--g);color:#fff}
 
+/* ── かんたん／詳細 の切替 */
+.mode-wrap{background:var(--bg);padding:16px var(--pad-x) 6px}
+.mode-toggle{max-width:520px;margin:0 auto;display:flex;background:#e6ece4;
+ border-radius:32px;padding:5px;gap:5px}
+.mode-btn{flex:1;border:none;background:transparent;padding:15px 10px;
+ font-size:1.06rem;font-weight:800;border-radius:28px;color:var(--sub);
+ cursor:pointer;transition:background .15s,color .15s;min-height:52px;font-family:inherit}
+.mode-btn.on{background:var(--g-d);color:#fff;box-shadow:0 2px 8px rgba(51,105,30,.32)}
+.mode-btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.mode-note{max-width:520px;margin:9px auto 0;text-align:center;
+ font-size:var(--fs-cap);color:var(--muted)}
+/* 既定は詳細。かんたん時に body.simple が付く */
+.s-only{display:none}
+body.simple .s-only{display:block}
+body.simple .d-only{display:none}
+body.simple .subtab[data-t="method"]{display:none}
+
 /* ── 費目タブ（論点内の切替） */
 .subtabs{position:sticky;top:0;z-index:20;background:var(--bg);
  padding:10px 0 8px;margin-bottom:20px;box-shadow:0 6px 12px -8px rgba(20,20,40,.18)}
@@ -110,7 +139,7 @@ a.attach-link:hover{background:var(--g);color:#fff}
  scrollbar-width:none;padding-bottom:2px}
 .subtabs-inner::-webkit-scrollbar{display:none}
 .subtab{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;
- padding:11px 20px;font-size:.95rem;font-weight:700;cursor:pointer;color:var(--sub);
+ padding:12px 22px;font-size:1rem;font-weight:700;cursor:pointer;color:var(--sub);
  white-space:nowrap;min-height:46px;font-family:inherit;transition:background .13s,color .13s}
 .subtab:hover{background:#eef3ea;color:var(--g-d)}
 .subtab.on{background:var(--g-d);color:#fff;border-color:var(--g-d)}
@@ -121,17 +150,17 @@ a.attach-link:hover{background:var(--g);color:#fff}
 
 /* ── 注記ボックス */
 .note{background:var(--cream);border:1px solid var(--gold);border-radius:12px;
- padding:14px 18px;font-size:.92rem;color:#61501b;margin:14px 0;line-height:1.8}
+ padding:16px 20px;font-size:var(--fs-sub);color:#61501b;margin:14px 0;line-height:1.8}
 .note b{color:#8a6410}
 .insight{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn);
- border-radius:12px;padding:14px 18px;font-size:.94rem;margin:14px 0;line-height:1.8}
+ border-radius:12px;padding:16px 20px;font-size:var(--fs-sub);margin:16px 0;line-height:1.85}
 .banner{background:#f2fbf6;border:1px solid #bfe6d1;color:#0f5537;border-radius:12px;
- padding:14px 18px;font-size:.96rem;margin-bottom:16px;line-height:1.8}
+ padding:16px 20px;font-size:var(--fs-lead);margin-bottom:18px;line-height:1.85}
 .opt{background:#fff;border:1px solid var(--line);border-left:5px solid var(--g);
- border-radius:0 12px 12px 0;padding:14px 18px;margin:11px 0;font-size:.96rem;line-height:1.8}
+ border-radius:0 12px 12px 0;padding:16px 20px;margin:12px 0;font-size:1rem;line-height:1.85}
 .opt b{color:var(--g-d)}
 .quote{background:#f7faf4;border-left:4px solid var(--g-l);border-radius:0 10px 10px 0;
- padding:14px 18px;margin:12px 0;font-size:.94rem;color:var(--sub);line-height:1.9}
+ padding:16px 20px;margin:14px 0;font-size:var(--fs-sub);color:var(--sub);line-height:1.95}
 .quote .meta{font-size:.82rem;color:var(--muted);margin-bottom:6px;font-weight:700}
 .quote .src{font-size:.78rem;color:#9aa1ac;margin-top:6px}
 
@@ -161,7 +190,7 @@ a.attach-link:hover{background:var(--g);color:#fff}
  #eceff1,#eceff1 6px,#e2e6e9 6px,#e2e6e9 12px)}
 
 footer{max-width:1480px;margin:10px auto 48px;padding:0 var(--pad-x);
- color:var(--muted);font-size:.86rem;line-height:1.95}
+ color:var(--muted);font-size:var(--fs-cap);line-height:2}
 footer h5{font-size:.95rem;color:var(--g-d);margin:20px 0 8px}
 footer ul{margin:0;padding-left:20px}
 footer li{margin-bottom:7px}
@@ -175,7 +204,7 @@ footer a{color:var(--g)}
 
 /* ────────────── スマホ最適化 ────────────── */
 @media (max-width:820px){
- :root{--fs:16px}
+ :root{--fs:17px}
  .two{grid-template-columns:1fr}
  .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
  .issue-grid{grid-template-columns:1fr}
@@ -207,7 +236,7 @@ footer a{color:var(--g)}
  .subtab{padding:11px 16px;font-size:.92rem}
 }
 @media (min-width:1600px){
- :root{--fs:17.5px}
+ :root{--fs:19px}
 }
 </style>
 </head>
@@ -224,8 +253,69 @@ footer a{color:var(--g)}
 <span class="badge-asof">政務調査資料・公開情報ベース</span>
 <span class="badge-asof">_C1</span>
 </header>
+<div class="mode-wrap">
+ <div class="mode-toggle" role="tablist" aria-label="表示モード切替">
+  <button type="button" class="mode-btn" data-m="simple" role="tab" aria-selected="false">かんたん</button>
+  <button type="button" class="mode-btn" data-m="detail" role="tab" aria-selected="true">詳細</button>
+ </div>
+ <div class="mode-note" id="mode-note"></div>
+</div>
 <div class="wrap">
-<div class="subtabs"><div class="subtabs-inner" role="tablist" aria-label="費目の切替"><button type="button" class="subtab" role="tab" data-t="summary" aria-selected="false" title="サマリー ─ 答えは「誰と比べるか」で変わる">サマリー</button><button type="button" class="subtab" role="tab" data-t="hoshu" aria-selected="false" title="議員報酬の月額水準">議員報酬</button><button type="button" class="subtab" role="tab" data-t="kimatsu" aria-selected="false" title="期末手当（ボーナス）の実質月数">期末手当</button><button type="button" class="subtab" role="tab" data-t="yakushoku" aria-selected="false" title="議長・副議長・委員長の格差構造">役職手当</button><button type="button" class="subtab" role="tab" data-t="nenshu" aria-selected="false" title="年収ベースの総額比較">年収総額</button><button type="button" class="subtab" role="tab" data-t="seimu" aria-selected="false" title="政務活動費の水準">政務活動費</button><button type="button" class="subtab" role="tab" data-t="bensho" aria-selected="false" title="費用弁償（会議出席の日当・公務旅費）">費用弁償</button><button type="button" class="subtab" role="tab" data-t="teisu" aria-selected="false" title="議員1人あたり人口と定数">定数</button><button type="button" class="subtab" role="tab" data-t="sogaku" aria-selected="false" title="議員1人にかかる公費の総額">公費総額</button><button type="button" class="subtab" role="tab" data-t="method" aria-selected="false" title="データの作り方と限界">データの作り方</button></div></div><div class="tabpane" id="pane-summary" role="tabpanel"><h2 class="sec">サマリー ─ 答えは「誰と比べるか」で変わる</h2>
+<div class="subtabs"><div class="subtabs-inner" role="tablist" aria-label="費目の切替"><button type="button" class="subtab" role="tab" data-t="summary" aria-selected="false" title="サマリー ─ 答えは「誰と比べるか」で変わる">サマリー</button><button type="button" class="subtab" role="tab" data-t="hoshu" aria-selected="false" title="議員報酬の月額水準">議員報酬</button><button type="button" class="subtab" role="tab" data-t="kimatsu" aria-selected="false" title="期末手当（ボーナス）の実質月数">期末手当</button><button type="button" class="subtab" role="tab" data-t="yakushoku" aria-selected="false" title="議長・副議長・委員長の格差構造">役職手当</button><button type="button" class="subtab" role="tab" data-t="nenshu" aria-selected="false" title="年収ベースの総額比較">年収総額</button><button type="button" class="subtab" role="tab" data-t="seimu" aria-selected="false" title="政務活動費の水準">政務活動費</button><button type="button" class="subtab" role="tab" data-t="bensho" aria-selected="false" title="費用弁償（会議出席の日当・公務旅費）">費用弁償</button><button type="button" class="subtab" role="tab" data-t="teisu" aria-selected="false" title="議員1人あたり人口と定数">定数</button><button type="button" class="subtab" role="tab" data-t="sogaku" aria-selected="false" title="議員1人にかかる公費の総額">公費総額</button><button type="button" class="subtab" role="tab" data-t="method" aria-selected="false" title="データの作り方と限界">データの作り方</button></div></div><div class="tabpane" id="pane-summary" role="tabpanel"><div class="s-only">
+<h2 class="sec">ひとことで言うと</h2>
+<div class="banner" style="font-size:1.15rem">
+府中市の市議会議員には、<b>1人あたり年間およそ1,037万円</b>の
+公費（税金）が使われています。<br>
+東京都の26市の中では<b>高いほうから5番目</b>。
+でも、全国で人口や財政が似ている16市の中では<b>7番目</b>で、ほぼ真ん中です。<br>
+<b>「高い」か「安い」かは、どこと比べるかで変わります。</b>
+</div>
+
+<h3 class="sub">お金の内わけ（1人あたり・1年間）</h3>
+<div class="grid kpis">
+<div class="card kpi"><div class="lab">給料にあたるお金</div>
+ <div class="val">660万円</div>
+ <div class="sub2">毎月 55万円</div></div>
+<div class="card kpi"><div class="lab">ボーナス</div>
+ <div class="val">323万円</div>
+ <div class="sub2">年に2回に分けて</div></div>
+<div class="card kpi"><div class="lab">調べものに使うお金</div>
+ <div class="val">54万円</div>
+ <div class="sub2">毎月 4万5,000円</div></div>
+<div class="card kpi"><div class="lab">合計</div>
+ <div class="val">1,037万円</div>
+ <div class="sub2">上の3つを足した金額</div></div>
+</div>
+
+<h3 class="sub">ほかの市とくらべると</h3>
+<div class="tblwrap"><table class="resp">
+<thead><tr><th>くらべる相手</th><th>府中市の順位</th><th>どう見えるか</th></tr></thead>
+<tbody>
+<tr><td data-th="くらべる相手"><b>東京都の26市</b></td>
+ <td class="num" data-th="順位"><b>5位</b> / 26市</td>
+ <td data-th="どう見えるか">高いほう</td></tr>
+<tr><td data-th="くらべる相手"><b>全国で似た規模の16市</b></td>
+ <td class="num" data-th="順位"><b>7位</b> / 16市</td>
+ <td data-th="どう見えるか">まんなかくらい</td></tr>
+</tbody></table></div>
+<div class="note">
+「全国で似た規模の16市」は、<b>人口が15万人以上</b>で、<b>お年寄りの割合が35%未満</b>、
+<b>お金のやりくりに余裕がある</b>という条件で、国（デジタル庁）が選んだ市です。
+府中市もこの16市に入っています。
+</div>
+
+<h3 class="sub">会議に出るための日当は？</h3>
+<div class="banner">
+府中市には<b>ありません</b>。会議に出ることは給料に含まれる、という考え方です。<br>
+調べた37市のうち、日当があるのは<b>1市だけ</b>でした。<br>
+出張したときの日当も、府中市には<b>ありません</b>。
+</div>
+
+<div class="note">
+もっとくわしく知りたい方は、上の「<b>詳細</b>」ボタンを押してください。
+金額の根拠になっている条例の名前や、計算のしかたまで見られます。
+</div>
+</div><div class="d-only"><h2 class="sec">サマリー ─ 答えは「誰と比べるか」で変わる</h2>
 <div class="insight">
 府中市の議員報酬・活動経費は、<b>東京都26市の中では上位</b>ですが、
 <b>全国の類似団体16市の中では中位</b>です。政務活動費にいたっては、
@@ -284,8 +374,25 @@ footer a{color:var(--g)}
 <div style="font-size:.92rem;color:var(--sub)">八王子市・立川市・武蔵野市・三鷹市・青梅市・府中市・昭島市・調布市・町田市・小金井市・小平市・日野市・東村山市・国分寺市・国立市・福生市・狛江市・東大和市・清瀬市・東久留米市・武蔵村山市・多摩市・稲城市・羽村市・あきる野市・西東京市</div></div>
 <div class="card"><h3 style="margin:0 0 10px;font-size:1rem">類似団体16市（デジタル庁）</h3>
 <div style="font-size:.92rem;color:var(--sub)">市川市(千葉)・藤沢市(神奈川)・四日市市(三重)・市原市(千葉)・府中市(東京)・つくば市(茨城)・富士市(静岡)・調布市(東京)・厚木市(神奈川)・三鷹市(東京)・安城市(愛知)・立川市(東京)・鎌倉市(神奈川)・浦安市(千葉)・刈谷市(愛知)・武蔵野市(東京)</div></div>
-</div></div>
-<div class="tabpane" id="pane-hoshu" role="tabpanel"><h2 class="sec">議員報酬の月額水準</h2><div class="banner"><b>問い：府中市の議員報酬は、高いのか安いのか。</b></div><p>議員が毎月受け取る「議員報酬」の月額を並べる。報酬は期末手当（ボーナス）の算定根拠にもなるため、ここが動くと年収全体が動く。</p><div class="grid kpis" style="margin-bottom:8px">
+</div></div></div>
+<div class="tabpane" id="pane-hoshu" role="tabpanel"><div class="s-only"><h2 class="sec">議員報酬</h2>
+<div class="banner" style="font-size:1.15rem"><b>議員のお給料は、いくら？</b></div>
+
+<p class="lead">府中市の市議会議員は、毎月 <b>55万円</b> を受け取ります。
+これが「議員報酬」で、会社でいうお給料にあたります。</p>
+<p class="lead">東京都の26市で見ると、<b>高いほうから4番目</b>です。
+ただし同じ55万円の市が5つあるので、<b>5市が並んで4位</b>という形です。
+26市の平均は約51万円なので、<b>平均より4万円ほど高い</b>ことになります。</p>
+<p class="lead">いっぽう、全国で人口や財政が似ている16市の中では<b>8番目</b>。
+この16市の<b>まんなかの額はちょうど55万円</b>で、府中市と同じです。</p>
+<div class="note">このお給料は、ボーナスの計算のもとにもなります。
+ここが変わると、年収全体が変わります。</div>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b>　今の55万円を続ける</div><div class="opt"><b>下げる</b>　ほかの市の平均に近づける。下げた額×30人×12か月が、市の節約になる</div><div class="opt"><b>上げる</b>　なり手が少ない、専業でやってほしい、という理由で上げる</div><div class="opt"><b>決め方を変える</b>　金額よりも「だれがどう決めるか」を変える</div>
+</div><div class="d-only"><h2 class="sec">議員報酬の月額水準</h2><div class="banner"><b>問い：府中市の議員報酬は、高いのか安いのか。</b></div><p class="lead">議員が毎月受け取る「議員報酬」の月額を並べる。報酬は期末手当（ボーナス）の算定根拠にもなるため、ここが動くと年収全体が動く。</p><div class="grid kpis" style="margin-bottom:8px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">550,000<small> 円</small></div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
@@ -523,8 +630,27 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-kimatsu" role="tabpanel"><h2 class="sec">期末手当（ボーナス）の実質月数</h2><div class="banner"><b>問い：ボーナスは誰がどう決めているのか。</b></div><p>期末手当は「基礎額 × 支給割合」で決まり、基礎額は多くの市で「議員報酬月額 ＋ 報酬月額×100分の20」と定められている。つまり条例に書かれた支給割合（府中市なら年4.90月）を額面どおりに受け取ると、20%分を見落とす。ここでは報酬月額に対する実質倍率（＝(1＋加算率)×支給割合。府中市は 1.20×4.90＝5.88月）に揃えて比較する。なお府中市では、この期末手当は東京都人事委員会勧告に連動して一般職と同じ幅で改定される運用が続いており、報酬本体を審議する特別職報酬等審議会の審議対象には入っていない。報酬を据え置いてもボーナスだけが動く構造がある。</p><div class="grid kpis" style="margin-bottom:8px">
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-kimatsu" role="tabpanel"><div class="s-only"><h2 class="sec">期末手当</h2>
+<div class="banner" style="font-size:1.15rem"><b>ボーナスは、だれが決めている？</b></div>
+
+<p class="lead">府中市の議員のボーナスは、<b>1年でお給料のおよそ5.9か月分</b>。
+金額にすると<b>年およそ323万円</b>です。</p>
+<p class="lead">ここには知っておきたい仕組みがあります。
+条例に書かれている数字は「4.9か月分」なのですが、
+計算のもとになる金額が<b>お給料の1.2倍</b>に設定されているため、
+実際にはお給料の<b>5.9か月分</b>が支払われます。
+条例の数字だけを見ると、この上乗せ分を見落とします。</p>
+<p class="lead">もうひとつ。府中市では<b>お給料の額を話し合う市民の会議（審議会）</b>がありますが、
+<b>ボーナスはその話し合いの対象になっていません</b>。
+市の職員の給与が上がると、それに合わせて自動的に上がる仕組みです。
+そのため「お給料は据え置き、でもボーナスだけ上がる」ということが起こります。</p>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b>　市の職員に合わせて上げ下げする、今のやり方を続ける</div><div class="opt"><b>市民の会議で決める</b>　ボーナスも審議会で話し合う対象にする</div><div class="opt"><b>連動をやめる</b>　議員と職員は役割がちがうとして、別々に決める</div>
+</div><div class="d-only"><h2 class="sec">期末手当（ボーナス）の実質月数</h2><div class="banner"><b>問い：ボーナスは誰がどう決めているのか。</b></div><p class="lead">期末手当は「基礎額 × 支給割合」で決まり、基礎額は多くの市で「議員報酬月額 ＋ 報酬月額×100分の20」と定められている。つまり条例に書かれた支給割合（府中市なら年4.90月）を額面どおりに受け取ると、20%分を見落とす。ここでは報酬月額に対する実質倍率（＝(1＋加算率)×支給割合。府中市は 1.20×4.90＝5.88月）に揃えて比較する。なお府中市では、この期末手当は東京都人事委員会勧告に連動して一般職と同じ幅で改定される運用が続いており、報酬本体を審議する特別職報酬等審議会の審議対象には入っていない。報酬を据え置いてもボーナスだけが動く構造がある。</p><div class="grid kpis" style="margin-bottom:8px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">5.88<small> 月</small></div><div class="sub2">条例の支給割合 4.90月 × 基礎額加算 20%</div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
@@ -786,8 +912,34 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-yakushoku" role="tabpanel"><h2 class="sec">議長・副議長・委員長の格差構造</h2><div class="banner"><b>問い：「役職手当」は、どこに隠れているのか。</b></div><p>地方議会には「役職手当」という名目の手当は通常存在しない。役職に応じた上乗せは、①議長・副議長の報酬月額そのものを高く設定する ②期末手当に役職加算率を上乗せする — の2つの形で実現される。府中市も同じで、議長650,000円・副議長570,000円・常任委員長560,000円・議員550,000円と、報酬月額そのものに差がつけられている。ここでは議員を100としたときの議長報酬の比率で、役職格差の大きさを比較する。</p><div class="grid kpis" style="margin-bottom:8px">
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-yakushoku" role="tabpanel"><div class="s-only"><h2 class="sec">役職手当</h2>
+<div class="banner" style="font-size:1.15rem"><b>「役職手当」は、あるの？</b></div>
+
+<p class="lead"><b>「役職手当」という名前の手当は、ありません。</b>
+これは府中市だけでなく、多くの市議会で同じです。</p>
+<p class="lead">では役職に就いた人はどうなるかというと、
+<b>お給料そのものが高く設定されています</b>。府中市の場合はこうです。</p>
+<div class="tblwrap"><table class="resp">
+<thead><tr><th>役職</th><th>毎月のお給料</th><th>議員との差</th></tr></thead>
+<tbody>
+<tr><td data-th="役職"><b>議長</b></td><td class="num" data-th="毎月">65万円</td>
+ <td class="num" data-th="差">＋10万円</td></tr>
+<tr><td data-th="役職"><b>副議長</b></td><td class="num" data-th="毎月">57万円</td>
+ <td class="num" data-th="差">＋2万円</td></tr>
+<tr><td data-th="役職"><b>委員長</b></td><td class="num" data-th="毎月">56万円</td>
+ <td class="num" data-th="差">＋1万円</td></tr>
+<tr class="me"><td data-th="役職"><b>ふつうの議員</b></td>
+ <td class="num" data-th="毎月">55万円</td><td class="num" data-th="差">—</td></tr>
+</tbody></table></div>
+<div class="note">つまり「手当がない」のではなく、
+<b>手当という形をとらずに、お給料の中に組み込まれている</b>ということです。</div>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b>　今の差を続ける</div><div class="opt"><b>差を小さくする</b>　議長・副議長のお給料を、ふつうの議員に近づける</div><div class="opt"><b>委員長にも配る</b>　議長・副議長に集まっている分を、委員長にも分ける</div>
+</div><div class="d-only"><h2 class="sec">議長・副議長・委員長の格差構造</h2><div class="banner"><b>問い：「役職手当」は、どこに隠れているのか。</b></div><p class="lead">地方議会には「役職手当」という名目の手当は通常存在しない。役職に応じた上乗せは、①議長・副議長の報酬月額そのものを高く設定する ②期末手当に役職加算率を上乗せする — の2つの形で実現される。府中市も同じで、議長650,000円・副議長570,000円・常任委員長560,000円・議員550,000円と、報酬月額そのものに差がつけられている。ここでは議員を100としたときの議長報酬の比率で、役職格差の大きさを比較する。</p><div class="grid kpis" style="margin-bottom:8px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">118.2<small> %</small></div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
@@ -1005,8 +1157,24 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-nenshu" role="tabpanel"><h2 class="sec">年収ベースの総額比較</h2><div class="banner"><b>問い：月額だけを見ていると、何を見落とすか。</b></div><p>議員報酬の月額だけで比べると、期末手当の支給月数や加算率の差が消えてしまう。ここでは年収概算を試算し、月額順位と年収順位がどれだけ入れ替わるかを見る。</p><div class="grid kpis" style="margin-bottom:8px">
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-nenshu" role="tabpanel"><div class="s-only"><h2 class="sec">年収総額</h2>
+<div class="banner" style="font-size:1.15rem"><b>1年で受け取る合計は？</b></div>
+
+<p class="lead">お給料とボーナスを足すと、府中市の議員は<b>年およそ983万円</b>を受け取ります。</p>
+<p class="lead">毎月の金額だけを見ていると、この合計を見誤ります。
+ボーナスの月数は市によってちがい、<b>いちばん少ない市と多い市で1年分に1か月以上の差</b>があるからです。
+毎月の額が同じでも、年間では何十万円も変わります。</p>
+<p class="lead">東京都の26市では<b>4番目</b>、全国で似た規模の16市では<b>6番目</b>です。
+ここでも、くらべる相手によって見え方が変わります。</p>
+<div class="note">この金額は条例の決まりから計算した<b>おおよその額</b>です。
+途中で辞めた場合の減額などは含んでいません。</div>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b></div><div class="opt"><b>年収で考える</b>　毎月の額ではなく、1年の合計額で目安を決める</div><div class="opt"><b>公表のしかたを変える</b>　市が公表するときに、1年の合計額も一緒に載せる</div>
+</div><div class="d-only"><h2 class="sec">年収ベースの総額比較</h2><div class="banner"><b>問い：月額だけを見ていると、何を見落とすか。</b></div><p class="lead">議員報酬の月額だけで比べると、期末手当の支給月数や加算率の差が消えてしまう。ここでは年収概算を試算し、月額順位と年収順位がどれだけ入れ替わるかを見る。</p><div class="grid kpis" style="margin-bottom:8px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">9,834,000<small> 円</small></div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
@@ -1226,8 +1394,25 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-seimu" role="tabpanel"><h2 class="sec">政務活動費の水準</h2><div class="banner"><b>問い：調査活動の費用は、活動量に見合っているか。</b></div><p>政務活動費は議員報酬とは別に、調査研究・広報・研修等のために交付される公費。府中市は1人あたり月額4万5,000円。2024年11月には月額5,000円の増額提案が議会運営委員会で議論されたが、委員会として一致した結論には至らなかった。</p><div class="grid kpis" style="margin-bottom:8px">
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-seimu" role="tabpanel"><div class="s-only"><h2 class="sec">政務活動費</h2>
+<div class="banner" style="font-size:1.15rem"><b>調べものに使うお金は、いくら？</b></div>
+
+<p class="lead">議員には、お給料とは別に<b>毎月4万5,000円</b>（年54万円）が渡されます。
+「政務活動費」といって、調査や勉強、市民への報告などに使うお金です。</p>
+<p class="lead">東京都の26市では<b>4番目に多い</b>金額です。
+26市の平均が約2万7,000円なので、<b>平均のおよそ1.7倍</b>にあたります。</p>
+<p class="lead">ところが、全国で似た規模の16市で見ると<b>8番目</b>で、
+<b>16市の平均（約4万8,000円）を下回ります</b>。
+神奈川県藤沢市の10万7,000円のように、府中市よりずっと多い市もあるためです。</p>
+<p class="lead">2024年11月、ある会派から<b>5万円に増やしたい</b>という提案が出ましたが、
+議会の話し合いでは<b>賛成と反対が分かれ、結論が出ませんでした</b>。</p>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b>　今の4万5,000円を続ける</div><div class="opt"><b>増やす</b>　5万円にする（2024年に出された提案）</div><div class="opt"><b>減らす</b>　26市の平均に近づける</div><div class="opt"><b>金額はそのままで使い方を変える</b>　レシートを全部公開する、使えるものを絞る など</div>
+</div><div class="d-only"><h2 class="sec">政務活動費の水準</h2><div class="banner"><b>問い：調査活動の費用は、活動量に見合っているか。</b></div><p class="lead">政務活動費は議員報酬とは別に、調査研究・広報・研修等のために交付される公費。府中市は1人あたり月額4万5,000円。2024年11月には月額5,000円の増額提案が議会運営委員会で議論されたが、委員会として一致した結論には至らなかった。</p><div class="grid kpis" style="margin-bottom:8px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">45,000<small> 円</small></div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
@@ -1474,8 +1659,30 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-bensho" role="tabpanel"><h2 class="sec">費用弁償（会議出席の日当・公務旅費）</h2><div class="banner"><b>問い：議会に出席することへの日当は、まだ残っているのか。</b></div><p>費用弁償とは、議員の職務に伴う実費を補填する制度で、(a) 本会議・委員会への出席そのものに支給する日当 と (b) 公務出張・行政視察の旅費 の2つに分かれる。(a) はかつて多くの市にあったが、「報酬に含まれるべき」「二重取りではないか」との批判から廃止が相次いだ。府中市の条例には(a)の規定がない。(b) については、日当を支給するか否かが分かれ目になる。実費精算なら手元に残らないが、日当は定額のため実際の支出との差額が残りうる。この点は近年大きく動いており、国の旅費制度改正（令和7年施行）で日当の廃止と宿泊費の上限つき実費化が進み、多くの市がこれに追随している。府中市も旅費の種目そのものに「日当」を置いておらず（府中市職員旅費支給条例 第8条）、宿泊費は実際に支払った額とのいずれか少ない額が上限（同 第21条）という設計になっている。一方で、旧来型の定額日当を維持している市も残っている。</p><h3 class="sub">(a) 会議出席への日当</h3>
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-bensho" role="tabpanel"><div class="s-only"><h2 class="sec">費用弁償</h2>
+<div class="banner" style="font-size:1.15rem"><b>会議に出ると、日当がもらえる？</b></div>
+
+<p class="lead"><b>府中市では、もらえません。</b>
+会議に出ることは、もともとお給料に含まれている、という考え方です。</p>
+<p class="lead">調べた37市のうち、会議に出るだけで日当が出るのは
+<b>茨城県つくば市の1市だけ</b>でした（1日2,000円）。
+かつては多くの市にありましたが、「お給料との二重取りではないか」という批判を受けて、
+神奈川県厚木市は2005年に、千葉県市川市は2010年に、それぞれやめています。</p>
+<p class="lead">出張したときの日当はどうでしょうか。<b>府中市にはこれもありません。</b>
+ホテル代も「実際に払った金額」までしか出ません。<br>
+一方で、<b>9つの市には出張の日当が残っています</b>。
+たとえば昭島市は1日3,600円、小金井市は1日2,800円です。</p>
+<div class="note">
+国が2025年に旅費のきまりを変え、<b>日当をなくして実費だけにする</b>流れが広がっています。
+青梅市は2026年にこれに合わせて日当をやめました。
+</div>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b></div><div class="opt"><b>出張の日当をなくす</b>　実際にかかった分だけを払う形にする</div><div class="opt"><b>報告書の公開を義務にする</b>　金額の話とは別に、視察の報告書を必ず公開する</div>
+</div><div class="d-only"><h2 class="sec">費用弁償（会議出席の日当・公務旅費）</h2><div class="banner"><b>問い：議会に出席することへの日当は、まだ残っているのか。</b></div><p class="lead">費用弁償とは、議員の職務に伴う実費を補填する制度で、(a) 本会議・委員会への出席そのものに支給する日当 と (b) 公務出張・行政視察の旅費 の2つに分かれる。(a) はかつて多くの市にあったが、「報酬に含まれるべき」「二重取りではないか」との批判から廃止が相次いだ。府中市の条例には(a)の規定がない。(b) については、日当を支給するか否かが分かれ目になる。実費精算なら手元に残らないが、日当は定額のため実際の支出との差額が残りうる。この点は近年大きく動いており、国の旅費制度改正（令和7年施行）で日当の廃止と宿泊費の上限つき実費化が進み、多くの市がこれに追随している。府中市も旅費の種目そのものに「日当」を置いておらず（府中市職員旅費支給条例 第8条）、宿泊費は実際に支払った額とのいずれか少ない額が上限（同 第21条）という設計になっている。一方で、旧来型の定額日当を維持している市も残っている。</p><h3 class="sub">(a) 会議出席への日当</h3>
 <div class="banner">対象37市（東京都26市＋類似団体16市。重複5市を除いたユニーク数）のうち、
 条例本文で確認できた範囲では <b>会議出席そのものに日当を支給している市は 1市</b>、
 <b>「なし」と確認できた市が 36市</b>で、<b>全37市を条例本文で確定</b>しました。
@@ -1622,8 +1829,24 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-teisu" role="tabpanel"><h2 class="sec">議員1人あたり人口と定数</h2><div class="banner"><b>問い：議員の数は、市民の数に見合っているか。</b></div><p>議員定数は議員報酬・政務活動費の総額を決める乗数でもある。1人あたりの額が平均並みでも定数が多ければ総額は膨らみ、逆もある。ここでは「議員1人あたりの人口」で、住民代表としての密度を比較する。数値が大きいほど議員1人が背負う市民が多い＝議員が相対的に少ない。</p><div class="grid kpis" style="margin-bottom:8px">
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-teisu" role="tabpanel"><div class="s-only"><h2 class="sec">定数</h2>
+<div class="banner" style="font-size:1.15rem"><b>議員の数は、多い？少ない？</b></div>
+
+<p class="lead">府中市の議員は<b>30人</b>です。
+市の人口を議員の数で割ると、<b>議員1人が約8,700人を受けもつ</b>計算になります。</p>
+<p class="lead">この数字が大きいほど、議員1人が背負う市民が多い＝
+<b>市民の数のわりに議員が少ない</b>ということです。
+東京都の26市の中で府中市は<b>3番目に大きく</b>、
+26市の平均（約6,000人）を大きく上回ります。</p>
+<p class="lead">議員の数は、市が支払うお金の総額を決める「かけ算の数」でもあります。
+1人あたりの金額が平均的でも、人数が多ければ総額はふくらみます。</p>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b>　30人を続ける</div><div class="opt"><b>減らす</b>　総額は減るが、議員1人の負担は増える</div><div class="opt"><b>増やす</b>　市民の声は届きやすくなるが、総額は増える</div>
+</div><div class="d-only"><h2 class="sec">議員1人あたり人口と定数</h2><div class="banner"><b>問い：議員の数は、市民の数に見合っているか。</b></div><p class="lead">議員定数は議員報酬・政務活動費の総額を決める乗数でもある。1人あたりの額が平均並みでも定数が多ければ総額は膨らみ、逆もある。ここでは「議員1人あたりの人口」で、住民代表としての密度を比較する。数値が大きいほど議員1人が背負う市民が多い＝議員が相対的に少ない。</p><div class="grid kpis" style="margin-bottom:8px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">8,739<small> 人</small></div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
@@ -1841,8 +2064,24 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-sogaku" role="tabpanel"><h2 class="sec">議員1人にかかる公費の総額</h2><div class="banner"><b>問い：結局、議員1人に年間いくらかかっているのか。</b></div><p>ここまでの要素（議員報酬・期末手当・政務活動費）を合算し、議員1人あたりに年間いくらの公費が充てられているかを試算する。なお府中市の令和6年度決算では、議会費の総額は5億2,479万円で、一般会計歳出の約0.40%にあたる（議会事務局の人件費等も含む）。</p><div class="grid kpis" style="margin-bottom:8px">
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-sogaku" role="tabpanel"><div class="s-only"><h2 class="sec">公費総額</h2>
+<div class="banner" style="font-size:1.15rem"><b>結局、議員1人にいくらかかっている？</b></div>
+
+<p class="lead">お給料・ボーナス・調べもののお金を全部足すと、
+議員1人あたり<b>年およそ1,037万円</b>です。30人分だと<b>年およそ3億1,000万円</b>になります。</p>
+<p class="lead">東京都の26市では<b>5番目</b>、全国で似た規模の16市では<b>7番目</b>です。</p>
+<p class="lead">なお、議会にかかるお金の全体（議会費）は
+<b>年およそ5億2,000万円</b>で、これは市が使うお金全体の<b>0.40%</b>にあたります。
+議員に払うお金のほかに、議会の事務職員の人件費なども含まれた金額です。</p>
+<div class="note">この合計におおよその額です。
+出張の日当などは市によって制度がちがうため、含めていません。</div>
+
+<h3 class="sub">これからどうする？ 考えられる選び方</h3>
+<p style="font-size:var(--fs-sub);color:var(--muted);margin-top:0">
+この資料は「こうすべきだ」とは書きません。選べる道をならべるだけです。</p>
+<div class="opt"><b>そのまま</b></div><div class="opt"><b>合計で目安を決める</b>　項目ごとではなく、1人あたりの合計額で水準を決める</div><div class="opt"><b>合計を公表する</b>　市が公表する資料に「議員1人あたりの合計額」を載せる</div>
+</div><div class="d-only"><h2 class="sec">議員1人にかかる公費の総額</h2><div class="banner"><b>問い：結局、議員1人に年間いくらかかっているのか。</b></div><p class="lead">ここまでの要素（議員報酬・期末手当・政務活動費）を合算し、議員1人あたりに年間いくらの公費が充てられているかを試算する。なお府中市の令和6年度決算では、議会費の総額は5億2,479万円で、一般会計歳出の約0.40%にあたる（議会事務局の人件費等も含む）。</p><div class="grid kpis" style="margin-bottom:8px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">10,374,000<small> 円</small></div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
@@ -2065,8 +2304,8 @@ footer a{color:var(--g)}
 市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
 発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
 会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
-転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div>
-<div class="tabpane" id="pane-method" role="tabpanel"><h2 class="sec">データの作り方と限界</h2>
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></div></div>
+<div class="tabpane" id="pane-method" role="tabpanel"><div class="d-only"><h2 class="sec">データの作り方と限界</h2>
 <h3 class="sub">なぜ「各市の条例をそのまま並べる」ことをしなかったか</h3>
 <p>各市の条例を個別に引くと、改定の時期がそろいません。たとえば八王子市は現行条例では
 議員報酬が650,000円ですが、比較の基準にした議長会調査（令和7年12月31日現在）では
@@ -2118,7 +2357,7 @@ footer a{color:var(--g)}
 <b>議長会調査の額</b>を使っています。改定の施行期日は本資料では確認していません。</li>
 <li>政務活動費は、会派に交付する市と議員個人に交付する市が混在します。
 1人あたりの額に換算していますが、使い方の自由度は同じではありません。</li>
-</ul></div><p><a class="backtop" href="./giin.html">← 論点一覧に戻る</a></p>
+</ul></div></div><p><a class="backtop" href="./giin.html">← 論点一覧に戻る</a></p>
 </div>
 <footer>
 <h5>出典</h5>
@@ -2159,6 +2398,27 @@ footer a{color:var(--g)}
 特定の結論・主張を示すものではありません。
 </div>
 </footer>
+
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('.mode-btn'));
+  var note=document.getElementById('mode-note');
+  var TXT={simple:'むずかしい言葉をはぶいて、要点だけを短く読めます',
+           detail:'根拠の条文・出典・計算方法まで載せた完全版です'};
+  function set(m,save){
+    document.body.classList.toggle('simple',m==='simple');
+    btns.forEach(function(b){var on=b.dataset.m===m;
+      b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');});
+    if(note)note.textContent=TXT[m];
+    if(save){try{localStorage.setItem('fuchu-view-mode',m);}catch(e){}}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.m,true);});});
+  // URL の ?mode=simple / #simple を最優先（共有・検証用）。次に前回の選択
+  var q=(location.search.match(/[?&]mode=(simple|detail)/)||[])[1];
+  var saved=null;try{saved=localStorage.getItem('fuchu-view-mode');}catch(e){}
+  set(q||(saved==='simple'?'simple':'detail'),false);
+})();
+</script>
 
 <script>
 (function(){
