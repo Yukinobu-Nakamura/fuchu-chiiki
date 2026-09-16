@@ -106,8 +106,9 @@ a.attach-link:hover{background:var(--g);color:#fff}
 .chip{display:inline-flex;align-items:center;gap:6px;border-radius:9px;padding:6px 11px;
  font-size:11.5px;border:1px solid var(--line);background:#fff}
 .chip b{font-weight:800;font-size:11px}
-.chip.yes{background:#fff6f8;border-color:var(--warn-line);color:var(--warn)}
-.chip.no{background:#f2fbf6;border-color:#bfe6d1;color:#12603f}
+/* 制度の有無は価値判断を伴わないため中立色。未確認のみグレーで区別する */
+.chip.neu{background:#fff;border-color:var(--line);color:var(--ink)}
+.chip.neu b{color:var(--g-d)}
 .chip.unk{background:#f6f7f9;color:var(--muted);font-style:italic}
 .chip.me{outline:2.5px solid var(--g);outline-offset:1px;font-weight:800}
 
@@ -151,7 +152,7 @@ footer a{color:var(--g)}
 <div class="tblwrap"><table>
 <thead><tr><th>指標</th><th>府中市</th><th>東京都26市での位置</th>
 <th>類似団体16市での位置</th></tr></thead>
-<tbody><tr><td><b>議員報酬 月額</b></td><td class="num">550,000円</td><td class="num"><b>4</b> / 26位<br><small>同額5市</small><br><small>平均 509,538円</small><br><small>↑高い側</small></td><td class="num"><b>8</b> / 16位<br><small>同額3市</small><br><small>平均 540,375円</small><br><small>中位</small></td></tr><tr><td><b>年収概算（報酬＋期末手当）</b></td><td class="num">9,834,000円</td><td class="num"><b>4</b> / 26位<br><small>同額4市</small><br><small>平均 8,945,633円</small><br><small>↑高い側</small></td><td class="num"><b>6</b> / 16位<br><small>同額3市</small><br><small>平均 9,412,485円</small><br><small>中位</small></td></tr><tr><td><b>政務活動費 月額</b></td><td class="num">45,000円</td><td class="num"><b>4</b> / 26位<br><small>同額2市</small><br><small>平均 26,788円</small><br><small>↑高い側</small></td><td class="num"><b>8</b> / 16位<br><small>平均 48,422円</small><br><small>中位</small></td></tr><tr><td><b>公費総額（年・1人あたり）</b></td><td class="num">10,374,000円</td><td class="num"><b>5</b> / 26位<br><small>平均 9,267,094円</small><br><small>↑高い側</small></td><td class="num"><b>7</b> / 16位<br><small>平均 9,993,548円</small><br><small>中位</small></td></tr></tbody></table></div>
+<tbody><tr><td><b>議員報酬 月額</b></td><td class="num">550,000円</td><td class="num"><b>4</b> / 26位<br><small>同額5市</small><br><small>平均 509,538円</small><br><small>↑高い側</small></td><td class="num"><b>8</b> / 16位<br><small>同額3市</small><br><small>平均 540,375円</small><br><small>中位</small></td></tr><tr><td><b>年収概算（報酬＋期末手当）</b></td><td class="num">9,834,000円</td><td class="num"><b>4</b> / 26位<br><small>同額4市</small><br><small>平均 8,961,115円</small><br><small>↑高い側</small></td><td class="num"><b>6</b> / 16位<br><small>同額3市</small><br><small>平均 9,412,485円</small><br><small>中位</small></td></tr><tr><td><b>政務活動費 月額</b></td><td class="num">45,000円</td><td class="num"><b>4</b> / 26位<br><small>同額2市</small><br><small>平均 26,788円</small><br><small>↑高い側</small></td><td class="num"><b>8</b> / 16位<br><small>平均 48,422円</small><br><small>中位</small></td></tr><tr><td><b>公費総額（年・1人あたり）</b></td><td class="num">10,374,000円</td><td class="num"><b>5</b> / 26位<br><small>平均 9,282,577円</small><br><small>↑高い側</small></td><td class="num"><b>7</b> / 16位<br><small>平均 9,993,548円</small><br><small>中位</small></td></tr></tbody></table></div>
 <p style="font-size:11.5px;color:var(--muted)">
 東京都26市は「同じ都・同じ制度環境の中での横並び」、類似団体16市は
 「人口・高齢化率・財政力が近い全国の団体との比較」です。どちらが正しいというものではなく、
@@ -210,7 +211,7 @@ footer a{color:var(--g)}
 </div><div class="issue-card">
 <div class="issue-no">論点 2　|　収入</div>
 <div class="issue-title">期末手当（ボーナス）と支給月数</div>
-<div class="issue-body"><b>問い：</b>ボーナスは誰がどう決めているのか。<br>期末手当は「報酬月額 × 支給月数」で決まる。府中市では東京都人事委員会勧告に連動して一般職と同じ幅で改定する運用が続いており、報酬本体を審議する特別職報酬等審議会の審議対象には入っていない。つまり報酬を据え置いても、ボ…</div>
+<div class="issue-body"><b>問い：</b>ボーナスは誰がどう決めているのか。<br>期末手当は「基礎額 × 支給割合」で決まり、基礎額は多くの市で「議員報酬月額 ＋ 報酬月額×100分の20」と定められている。つまり条例に書かれた支給割合（府中市なら年4.90月）を額面どおりに受け取ると、20%分を見落…</div>
 <div class="issue-kpi"><span>26市中 1/26位</span><span>類似団体中 1/16位</span></div>
 <a class="attach-link" href="./giin_ronten02.html">📄 論点2 詳細を開く →</a>
 </div><div class="issue-card">
@@ -222,7 +223,7 @@ footer a{color:var(--g)}
 </div><div class="issue-card">
 <div class="issue-no">論点 4　|　収入</div>
 <div class="issue-title">年収ベースの総額比較</div>
-<div class="issue-body"><b>問い：</b>月額だけを見ていると、何を見落とすか。<br>議員報酬の月額だけで比べると、期末手当の支給月数や役職加算の差が消えてしまう。ここでは「報酬月額×12 ＋ 期末手当」で年収概算を試算し、月額順位と年収順位がどれだけ入れ替わるかを見る。…</div>
+<div class="issue-body"><b>問い：</b>月額だけを見ていると、何を見落とすか。<br>議員報酬の月額だけで比べると、期末手当の支給月数や役職加算の差が消えてしまう。ここでは年収概算を試算し、月額順位と年収順位がどれだけ入れ替わるかを見る。…</div>
 <div class="issue-kpi"><span>26市中 4/26位</span><span>類似団体中 6/16位</span></div>
 <a class="attach-link" href="./giin_ronten04.html">📄 論点4 詳細を開く →</a>
 </div><div class="issue-card">
@@ -246,10 +247,53 @@ footer a{color:var(--g)}
 </div><div class="issue-card">
 <div class="issue-no">論点 8　|　総括</div>
 <div class="issue-title">議員1人にかかる公費の総額</div>
-<div class="issue-body"><b>問い：</b>結局、議員1人に年間いくらかかっているのか。<br>ここまでの要素（議員報酬・期末手当・政務活動費）を合算し、議員1人あたりに年間いくらの公費が充てられているかを試算する。費用弁償は市ごとに制度の有無が違い、実績額も公表粒度が揃わないため、この合算には含めていない。…</div>
+<div class="issue-body"><b>問い：</b>結局、議員1人に年間いくらかかっているのか。<br>ここまでの要素（議員報酬・期末手当・政務活動費）を合算し、議員1人あたりに年間いくらの公費が充てられているかを試算する。費用弁償は市ごとに制度の有無が違い、実績額も公表粒度が揃わないため、この合算には含めていない。なお府…</div>
 <div class="issue-kpi"><span>26市中 5/26位</span><span>類似団体中 7/16位</span></div>
 <a class="attach-link" href="./giin_ronten08.html">📄 論点8 詳細を開く →</a>
 </div>
+</div>
+</section>
+
+<section>
+<h2 class="sec">データの作り方と限界</h2>
+<div class="card" style="font-size:12.5px">
+<h3 style="margin:0 0 8px;font-size:14px;color:var(--g-d)">なぜ「各市の条例をそのまま並べる」ことをしなかったか</h3>
+<p style="margin:0 0 10px">
+各市の条例を個別に引くと、改定の時期がそろいません。たとえば八王子市は令和8年1月施行で
+議員報酬を61万円から65万円に引き上げており、「A市は改定後・B市は改定前」という
+混在したスナップショットで順位や平均を出すと、実態と食い違います。<br>
+そこで本資料は、<b>全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在・
+全国815市・回収率100%）</b>を比較の基準層に置き、全37市を同一時点でそろえました。
+この表から算出した東京都26市の議員報酬の平均は <b>509,538円</b> で、
+府中市議会（令和7年 総務委員会 2025-12-16）で示された平均値と一致します。
+</p>
+<h3 style="margin:14px 0 8px;font-size:14px;color:var(--g-d)">期末手当を「実質月数」に直している理由</h3>
+<p style="margin:0 0 10px">
+期末手当は「基礎額 × 支給割合」で決まり、基礎額は多くの市で
+「議員報酬月額 ＋ 報酬月額×100分の20」と定められています。条例に書かれた支給割合だけを
+並べると、この20%分を見落とします。しかも加算率は市によって異なり、
+<b>20%が主流である一方、藤沢市・刈谷市・安城市・四日市市は45%、つくば市は15%</b>です。<br>
+そこで <b>実質月数 ＝（1＋加算率）× 支給割合</b> に統一しました。
+府中市は 1.20 × 4.90 ＝ <b>5.88月</b> です。
+</p>
+<h3 style="margin:14px 0 8px;font-size:14px;color:var(--g-d)">検証したこと</h3>
+<ul style="margin:0 0 10px;padding-left:18px">
+<li>加算率について、各市の条例本文を独立に読み直した結果と議長会調査を突き合わせ、
+<b>16市で一致</b>、食い違いは東村山市の1件のみでした（条例の記載を採用）。</li>
+<li>府中市の値は、例規集の条例本文（議員報酬・期末手当・費用弁償／議員定数）を
+直接確認しています。</li>
+<li>同額の市は<b>同順位</b>として扱っています（議員報酬550,000円には5市が並びます）。</li>
+</ul>
+<h3 style="margin:14px 0 8px;font-size:14px;color:var(--g-d)">できていないこと</h3>
+<ul style="margin:0;padding-left:18px">
+<li><b>費用弁償の旅費の金額</b>は、多くの市が「市長の例による」「職員の旅費条例の例による」
+という参照規定を置いており、参照先の別条例まで到達できませんでした。
+到達できなかった市は「未確認」と表示し、「なし」や「0円」とは区別しています。</li>
+<li>議長会調査は令和7年12月31日現在です。その後に改定した市（八王子市・市原市）は、
+本資料の順位には改定前の額が使われています。</li>
+<li>政務活動費は、会派に交付する市と議員個人に交付する市が混在します。
+1人あたりの額に換算していますが、使い方の自由度は同じではありません。</li>
+</ul>
 </div>
 </section>
 
@@ -267,15 +311,27 @@ footer a{color:var(--g)}
 <footer>
 <h5>出典</h5>
 <ul>
-<li>各市の例規集（議会の議員の議員報酬、費用弁償及び期末手当に関する条例／政務活動費の交付に関する条例）。府中市は「府中市議会議員の議員報酬及び費用弁償等に関する条例」。各数値の出典URLは論点詳細ページの表に個別記載。</li>
-<li>類似団体の区分：デジタル庁「経済・財政・人口と暮らし」ダッシュボード（自治体区分＝一般市(15万人以上)／高齢化率35%未満／財政力指数1.0以上、16団体）。人口は住民基本台帳2025。</li>
-<li>府中市議会の議論：府中市議会会議録検索システム（引用は著作権法第40条第1項および第32条に基づく）</li>
+<li><b>議員報酬・期末手当の支給割合と加算率・議長報酬比率</b>：全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）<a href="https://www.si-gichokai.jp/research/teisu/" target="_blank" rel="noopener">https://www.si-gichokai.jp/research/teisu/</a>　同調査から対象37市分の数値を抽出し、本資料で集計・並べ替え・作図を行いました（編集・加工あり）。</li>
+<li><b>議員定数</b>：全国市議会議長会「市議会議員定数に関する調査結果」および各市の議員定数条例</li>
+<li><b>政務活動費・費用弁償</b>：各市の「政務活動費の交付に関する条例」「議会の議員の議員報酬、費用弁償及び期末手当に関する条例」。府中市は「府中市議会議員の議員報酬及び費用弁償等に関する条例」（<a href="https://www1.g-reiki.net/city.fuchu.tokyo/reiki_honbun/g130RG00000137.html" target="_blank" rel="noopener">例規集</a>）。各数値の出典は論点詳細ページの表に個別記載。</li>
+<li><b>類似団体の区分</b>：デジタル庁「経済・財政・人口と暮らし」ダッシュボード（自治体区分＝一般市(15万人以上)／高齢化率35%未満／財政力指数1.0以上、16団体）。同ダッシュボードの抽出結果を基に本資料で加工しました。人口は住民基本台帳2025。<b>総務省「類似団体別市町村財政指数表」の類似団体区分とは別のものです。</b></li>
+<li><b>府中市議会の議論</b>：府中市議会会議録検索システム。議員の発言の引用は著作権法第40条第1項および第32条に、市側職員の答弁の引用は第32条に基づきます。</li>
 
 </ul>
+<div class="note" style="max-width:1180px;margin:0 auto">
+<b>本資料について</b><br>
+作成：中村幸信（公認会計士）。府中市議会議員および府中市の関係者ではありません。<br>
+本資料は公開情報に基づく個人の政務調査資料であり、特定の候補者・政党への支持または
+不支持を呼びかけるものではありません。また、特定の結論・主張を示すものでもありません。<br>
+記載内容の誤り・出典に関するご指摘は、本サイトのリポジトリ
+（<a href="https://github.com/Yukinobu-Nakamura/fuchu-chiiki" target="_blank" rel="noopener">GitHub</a>）
+の Issue へお寄せください。確認のうえ、訂正履歴を残して修正します。
+</div>
 <div class="disclaimer">
 本資料は公開情報に基づく政務調査資料であり、府中市および各市の公式見解を示すものではありません。
-数値は原則として条例本文（令和7年度時点）に基づきますが、改定時期のずれ・運用実態の差により
-実際の支給額とは異なる場合があります。「未確認」と表示した項目は一次情報で確認できなかったものです。
+議員報酬・期末手当の数値は全国市議会議長会の調査結果（令和7年12月31日現在）に基づきます。
+2026年1月以降に施行された改定は反映していません。運用実態の差もあるため、
+現在の実際の支給額とは異なる場合があります。「未確認」と表示した項目は一次情報で確認できなかったものです。
 本資料は判断材料の提示にとどめ、特定の結論・主張を示すものではありません。
 </div>
 </footer>

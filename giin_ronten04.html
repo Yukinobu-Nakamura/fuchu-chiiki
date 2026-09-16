@@ -106,8 +106,9 @@ a.attach-link:hover{background:var(--g);color:#fff}
 .chip{display:inline-flex;align-items:center;gap:6px;border-radius:9px;padding:6px 11px;
  font-size:11.5px;border:1px solid var(--line);background:#fff}
 .chip b{font-weight:800;font-size:11px}
-.chip.yes{background:#fff6f8;border-color:var(--warn-line);color:var(--warn)}
-.chip.no{background:#f2fbf6;border-color:#bfe6d1;color:#12603f}
+/* 制度の有無は価値判断を伴わないため中立色。未確認のみグレーで区別する */
+.chip.neu{background:#fff;border-color:var(--line);color:var(--ink)}
+.chip.neu b{color:var(--g-d)}
 .chip.unk{background:#f6f7f9;color:var(--muted);font-style:italic}
 .chip.me{outline:2.5px solid var(--g);outline-offset:1px;font-weight:800}
 
@@ -139,22 +140,23 @@ footer a{color:var(--g)}
 <div class="wrap">
 <section><h2 class="sec">論点概要</h2>
 <div class="banner"><b>問い：月額だけを見ていると、何を見落とすか。</b></div>
-<p style="font-size:13.5px">議員報酬の月額だけで比べると、期末手当の支給月数や役職加算の差が消えてしまう。ここでは「報酬月額×12 ＋ 期末手当」で年収概算を試算し、月額順位と年収順位がどれだけ入れ替わるかを見る。</p>
+<p style="font-size:13.5px">議員報酬の月額だけで比べると、期末手当の支給月数や役職加算の差が消えてしまう。ここでは年収概算を試算し、月額順位と年収順位がどれだけ入れ替わるかを見る。</p>
 <div class="grid kpis" style="margin-bottom:6px">
 <div class="card kpi"><div class="lab">府中市の値</div>
  <div class="val">9,834,000<small> 円</small></div></div>
 <div class="card kpi"><div class="lab">東京都26市での位置</div>
  <div class="val">4<small> / 26位</small></div>
- <div class="sub2">平均 8,945,633円 を <b>888,367円 上回る</b><br>同額 4市（4市が並ぶ4位タイ）</div></div>
+ <div class="sub2">平均 8,961,115円 を <b>872,885円 上回る</b><br>同額 4市（4市が並ぶ4位タイ）</div></div>
 <div class="card kpi"><div class="lab">類似団体16での位置</div>
  <div class="val">6<small> / 16位</small></div>
  <div class="sub2">平均 9,412,485円 を <b>421,515円 上回る</b><br>同額 3市</div></div>
 </div>
+<div class="note"><b>算定方法（この数値は概算です）</b><br><b>年収概算 ＝ 報酬月額 × 12 ＋ 報酬月額 ×（1＋加算率）× 支給割合合計</b><br>末尾の「（1＋加算率）」は期末手当の基礎額にかかる加算で、<b>市ごとに異なる値</b>を用いています（20%が31市、45%が藤沢・刈谷・安城・四日市、15%がつくば市）。府中市の場合は 550,000×12 ＋ 550,000×1.20×4.90 ＝ <b>9,834,000円</b>。<br>本値は条例の規定から機械的に算出した<b>概算</b>であり、在職期間による減額・年度途中の改定・実際の支給実績は反映していません。期末手当以外の手当（該当するものがある場合）も含みません。</div>
 </section>
 <section><h2 class="sec">東京都26市との比較</h2>
 <div class="chart-card card">
 <h3>年収ベースの総額比較（東京都26市・円）</h3>
-<div class="cap">出典：各市例規集の条例本文。令和7年度時点。未確認は網掛け</div>
+<div class="cap">出典：全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）を基に、対象37市分を抽出して作図。未確認は網掛け</div>
 <svg viewBox="0 0 980 726" role="img" aria-label="年収ベースの総額比較（東京都26市・円）">
 <line x1="140.0" y1="12" x2="140.0" y2="696" stroke="#e5e7eb" stroke-width="1"/>
 <text x="140.0" y="712" font-size="10.5" fill="#6b7280" text-anchor="middle">0</text>
@@ -213,30 +215,30 @@ footer a{color:var(--g)}
 <text x="132" y="449.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">多摩市</text>
 <rect x="140" y="438.0" width="559.8" height="14" fill="#c3cbd4" rx="2.5"/>
 <text x="706.8" y="449.0" font-size="11" fill="#4b5563" font-weight="600">8,409,240</text>
-<text x="132" y="475.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">福生市</text>
-<rect x="140" y="464.0" width="547.5" height="14" fill="#c3cbd4" rx="2.5"/>
-<text x="694.5" y="475.0" font-size="11" fill="#4b5563" font-weight="600">8,224,800</text>
-<text x="132" y="501.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">小金井市</text>
-<rect x="140" y="490.0" width="546.0" height="14" fill="#c3cbd4" rx="2.5"/>
-<text x="693.0" y="501.0" font-size="11" fill="#4b5563" font-weight="600">8,202,600</text>
-<text x="132" y="527.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">国立市</text>
+<text x="132" y="475.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">東村山市</text>
+<rect x="140" y="464.0" width="548.2" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="695.2" y="475.0" font-size="11" fill="#4b5563" font-weight="600">8,235,300</text>
+<text x="132" y="501.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">福生市</text>
+<rect x="140" y="490.0" width="547.5" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="694.5" y="501.0" font-size="11" fill="#4b5563" font-weight="600">8,224,800</text>
+<text x="132" y="527.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">小金井市</text>
 <rect x="140" y="516.0" width="546.0" height="14" fill="#c3cbd4" rx="2.5"/>
 <text x="693.0" y="527.0" font-size="11" fill="#4b5563" font-weight="600">8,202,600</text>
-<text x="132" y="553.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">東大和市</text>
-<rect x="140" y="542.0" width="545.1" height="14" fill="#c3cbd4" rx="2.5"/>
-<text x="692.1" y="553.0" font-size="11" fill="#4b5563" font-weight="600">8,189,040</text>
-<text x="132" y="579.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">稲城市</text>
-<rect x="140" y="568.0" width="542.0" height="14" fill="#c3cbd4" rx="2.5"/>
-<text x="689.0" y="579.0" font-size="11" fill="#4b5563" font-weight="600">8,143,200</text>
-<text x="132" y="605.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">羽村市</text>
-<rect x="140" y="594.0" width="533.8" height="14" fill="#c3cbd4" rx="2.5"/>
-<text x="680.8" y="605.0" font-size="11" fill="#4b5563" font-weight="600">8,019,000</text>
-<text x="132" y="631.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">あきる野市</text>
+<text x="132" y="553.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">国立市</text>
+<rect x="140" y="542.0" width="546.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="693.0" y="553.0" font-size="11" fill="#4b5563" font-weight="600">8,202,600</text>
+<text x="132" y="579.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">東大和市</text>
+<rect x="140" y="568.0" width="545.1" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="692.1" y="579.0" font-size="11" fill="#4b5563" font-weight="600">8,189,040</text>
+<text x="132" y="605.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">稲城市</text>
+<rect x="140" y="594.0" width="542.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="689.0" y="605.0" font-size="11" fill="#4b5563" font-weight="600">8,143,200</text>
+<text x="132" y="631.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">羽村市</text>
 <rect x="140" y="620.0" width="533.8" height="14" fill="#c3cbd4" rx="2.5"/>
 <text x="680.8" y="631.0" font-size="11" fill="#4b5563" font-weight="600">8,019,000</text>
-<text x="132" y="657.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">東村山市</text>
-<rect x="140" y="646.0" width="521.4" height="14" fill="#c3cbd4" rx="2.5"/>
-<text x="668.4" y="657.0" font-size="11" fill="#4b5563" font-weight="600">7,832,750</text>
+<text x="132" y="657.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">あきる野市</text>
+<rect x="140" y="646.0" width="533.8" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="680.8" y="657.0" font-size="11" fill="#4b5563" font-weight="600">8,019,000</text>
 <text x="132" y="683.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">武蔵村山市</text>
 <rect x="140" y="672.0" width="517.7" height="14" fill="#c3cbd4" rx="2.5"/>
 <text x="664.7" y="683.0" font-size="11" fill="#4b5563" font-weight="600">7,777,800</text>
@@ -246,13 +248,13 @@ footer a{color:var(--g)}
 <div class="tblwrap"><table>
 <caption style="text-align:left;font-size:12px;color:var(--muted);padding:6px 2px">東京都26市（降順）</caption>
 <thead><tr><th>順位</th><th>自治体</th><th>年収ベースの総額比較（円）</th><th>出典</th></tr></thead>
-<tbody><tr><td class="num">1</td><td>八王子市</td><td class="num">10,906,800</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">2</td><td>武蔵野市</td><td class="num">10,030,680</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">3</td><td>立川市</td><td class="num">9,941,280</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">4</td><td>三鷹市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr class="me"><td class="num">4</td><td>府中市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">4</td><td>調布市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">4</td><td>町田市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">8</td><td>昭島市</td><td class="num">9,476,400</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">9</td><td>青梅市</td><td class="num">9,444,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">10</td><td>日野市</td><td class="num">9,417,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">11</td><td>小平市</td><td class="num">9,141,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">12</td><td>西東京市</td><td class="num">8,964,780</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">13</td><td>清瀬市</td><td class="num">8,940,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">14</td><td>国分寺市</td><td class="num">8,874,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">15</td><td>東久留米市</td><td class="num">8,582,400</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">16</td><td>狛江市</td><td class="num">8,510,880</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">17</td><td>多摩市</td><td class="num">8,409,240</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">18</td><td>福生市</td><td class="num">8,224,800</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">19</td><td>小金井市</td><td class="num">8,202,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">19</td><td>国立市</td><td class="num">8,202,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">21</td><td>東大和市</td><td class="num">8,189,040</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">22</td><td>稲城市</td><td class="num">8,143,200</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">23</td><td>羽村市</td><td class="num">8,019,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">23</td><td>あきる野市</td><td class="num">8,019,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">25</td><td>東村山市</td><td class="num">7,832,750</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">26</td><td>武蔵村山市</td><td class="num">7,777,800</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr></tbody></table></div>
+<tbody><tr><td class="num">1</td><td>八王子市</td><td class="num">10,906,800</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">2</td><td>武蔵野市</td><td class="num">10,030,680</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">3</td><td>立川市</td><td class="num">9,941,280</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">4</td><td>三鷹市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr class="me"><td class="num">4</td><td>府中市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">4</td><td>調布市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">4</td><td>町田市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">8</td><td>昭島市</td><td class="num">9,476,400</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">9</td><td>青梅市</td><td class="num">9,444,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">10</td><td>日野市</td><td class="num">9,417,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">11</td><td>小平市</td><td class="num">9,141,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">12</td><td>西東京市</td><td class="num">8,964,780</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">13</td><td>清瀬市</td><td class="num">8,940,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">14</td><td>国分寺市</td><td class="num">8,874,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">15</td><td>東久留米市</td><td class="num">8,582,400</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">16</td><td>狛江市</td><td class="num">8,510,880</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">17</td><td>多摩市</td><td class="num">8,409,240</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">18</td><td>東村山市</td><td class="num">8,235,300</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">19</td><td>福生市</td><td class="num">8,224,800</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">20</td><td>小金井市</td><td class="num">8,202,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">20</td><td>国立市</td><td class="num">8,202,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">22</td><td>東大和市</td><td class="num">8,189,040</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">23</td><td>稲城市</td><td class="num">8,143,200</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">24</td><td>羽村市</td><td class="num">8,019,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">24</td><td>あきる野市</td><td class="num">8,019,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">26</td><td>武蔵村山市</td><td class="num">7,777,800</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr></tbody></table></div>
 </section>
 <section><h2 class="sec">類似団体16市との比較</h2>
 <div class="note">デジタル庁「経済・財政・人口と暮らし」の類似団体（一般市15万人以上／高齢化率35%未満／財政力指数1.0以上）。16団体のうち5市は東京都内のため、26市比較と一部重複します。</div>
 <div class="chart-card card">
 <h3>年収ベースの総額比較（類似団体16市・円）</h3>
-<div class="cap">出典：各市例規集の条例本文。令和7年度時点</div>
+<div class="cap">出典：全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）を基に、対象37市分を抽出して作図。未確認は網掛け</div>
 <svg viewBox="0 0 980 466" role="img" aria-label="年収ベースの総額比較（類似団体16市・円）">
 <line x1="140.0" y1="12" x2="140.0" y2="436" stroke="#e5e7eb" stroke-width="1"/>
 <text x="140.0" y="452" font-size="10.5" fill="#6b7280" text-anchor="middle">0</text>
@@ -314,67 +316,46 @@ footer a{color:var(--g)}
 <div class="tblwrap"><table>
 <caption style="text-align:left;font-size:12px;color:var(--muted);padding:6px 2px">類似団体16市（降順）</caption>
 <thead><tr><th>順位</th><th>自治体</th><th>年収ベースの総額比較（円）</th><th>出典</th></tr></thead>
-<tbody><tr><td class="num">1</td><td>市川市<small>[千葉]</small></td><td class="num">10,582,080</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">2</td><td>四日市市<small>[三重]</small></td><td class="num">10,364,525</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">3</td><td>武蔵野市</td><td class="num">10,030,680</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">4</td><td>立川市</td><td class="num">9,941,280</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">5</td><td>市原市<small>[千葉]</small></td><td class="num">9,879,960</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr class="me"><td class="num">6</td><td>府中市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">6</td><td>調布市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">6</td><td>三鷹市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">9</td><td>藤沢市<small>[神奈川]</small></td><td class="num">9,647,375</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">10</td><td>つくば市<small>[茨城]</small></td><td class="num">9,325,020</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">11</td><td>富士市<small>[静岡]</small></td><td class="num">9,317,400</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">12</td><td>浦安市<small>[千葉]</small></td><td class="num">9,141,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">13</td><td>刈谷市<small>[愛知]</small></td><td class="num">8,435,050</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">14</td><td>鎌倉市<small>[神奈川]</small></td><td class="num">8,392,080</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">15</td><td>安城市<small>[愛知]</small></td><td class="num">8,230,150</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">16</td><td>厚木市<small>[神奈川]</small></td><td class="num">7,810,560</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr></tbody></table></div>
+<tbody><tr><td class="num">1</td><td>市川市<small>[千葉]</small></td><td class="num">10,582,080</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">2</td><td>四日市市<small>[三重]</small></td><td class="num">10,364,525</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">3</td><td>武蔵野市</td><td class="num">10,030,680</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">4</td><td>立川市</td><td class="num">9,941,280</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">5</td><td>市原市<small>[千葉]</small></td><td class="num">9,879,960</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr class="me"><td class="num">6</td><td>府中市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">6</td><td>調布市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">6</td><td>三鷹市</td><td class="num">9,834,000</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">9</td><td>藤沢市<small>[神奈川]</small></td><td class="num">9,647,375</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">10</td><td>つくば市<small>[茨城]</small></td><td class="num">9,325,020</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">11</td><td>富士市<small>[静岡]</small></td><td class="num">9,317,400</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">12</td><td>浦安市<small>[千葉]</small></td><td class="num">9,141,600</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">13</td><td>刈谷市<small>[愛知]</small></td><td class="num">8,435,050</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">14</td><td>鎌倉市<small>[神奈川]</small></td><td class="num">8,392,080</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">15</td><td>安城市<small>[愛知]</small></td><td class="num">8,230,150</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr><tr><td class="num">16</td><td>厚木市<small>[神奈川]</small></td><td class="num">7,810,560</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener" title="全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）">議長会調査</a></td></tr></tbody></table></div>
 </section>
 <section><h2 class="sec">取りうる選択肢</h2>
 <p style="font-size:12.5px;color:var(--muted)">
 本資料は判断材料の提示にとどめ、いずれかを推奨するものではありません。</p>
 <div class="opt"><b>A 現状維持</b></div><div class="opt"><b>B 年収ベースでの水準調整</b>　月額ではなく年収総額を目標値として設定し直す。</div><div class="opt"><b>C 公表方法の改善</b>　市の公表資料で、月額だけでなく年収総額を併記する。</div></section>
-<section><h2 class="sec">府中市議会での議論</h2><div class="quote">
-<div class="meta">令和7年 総務委員会（2025-12-16）　竹内祐子 委員［日本共産党］</div>
-「東京都26市において2025年４月１日現在で、１位が八王子市で61万円、２位が武蔵野市で56万1,000円、３位が立川市で55万6,000円、それに次いで、府中市は第４位で55万円とのことです。26市の議員報酬額の平均で見ますと50万9,538円と、府中市は平均よりも高いということになっております。」
-</div>
-<div class="insight"><b>基準日にご注意ください。</b>上の引用は<b>2025年4月1日現在</b>の数値です。一方、本ページの表・グラフは<b>各市の現行条例（2026年9月時点で確認）</b>に基づきます。2025年中に多くの市で報酬・期末手当の改定があり（例：八王子市は令和8年1月施行で議員報酬 61万円→65万円、国分寺市は令和7年4月施行で議長54万円→60万円）、両者の順位・平均値は一致しません。</div>
-<div class="quote">
-<div class="meta">令和7年 総務委員会（2025-12-16）　清水貴之 庶務課長［市側説明］</div>
-「本案は、令和７年の東京都人事委員会勧告に基づきまして、本市の一般職の職員の勤勉手当の改正と同様、議員の期末手当について改正するものでございます。」
-</div>
-<div class="quote">
-<div class="meta">令和7年 総務委員会（2025-12-16）　おぎの雄太郎 委員［賛成意見］</div>
-「本議案は、令和７年の東京都人事委員会勧告に基づき、一般職職員の勤勉手当の改正に準じて、議員の期末手当を改正するものであり、人事委員会勧告の趣旨を尊重し、制度の公平性と妥当性を確保する内容であると考えております。」
-</div>
-<div class="quote">
-<div class="meta">令和7年 総務委員会（2025-12-16）　竹内祐子 委員［反対意見］</div>
-「今年も昨年と同様に厳しい物価高騰が続く中、議員の期末手当については、審議会で行われた審議対象とはなっておりませんが、議員の報酬は期末手当支給額の算出根拠となることから、答申内容が連動してしかるべきと考えます。」
-</div>
-<div class="quote">
-<div class="meta">令和5年 総務委員会（2023-12-18）　奥村さち子 委員［生活者ネットワーク］</div>
-「議員という特別職と職員の役割というのは性質上に違いがあると私は考えております。議員については、市民の負託を受けて、市政に関わる活動をしております。期末手当についても、報酬同様に、市民からの評価、そういった観点から市民も含めた審議会で審議して公表されるといった形で決定するべきものではないかと思います。」
-</div>
-<div class="quote">
-<div class="meta">令和5年 総務委員会（2023-12-18）　遠藤公巳明 庶務課長［市側答弁］</div>
-「近隣多摩地域の25市を確認しましたところ、本市と同様に10市が連動するということで伺っております。」
-</div>
-<div class="quote" style="border-left-color:#e0b464;background:#fbf7ea">
-<div class="meta">【要約】2025年12月改正の影響額</div>全議員30人分で93万3,600円の増額（令和7年 総務委員会 2025-12-16 質疑への答弁）
-</div>
-<div class="quote" style="border-left-color:#e0b464;background:#fbf7ea">
-<div class="meta">【要約】改正内容</div>12月に支給する場合の支給割合を 100分の242.5 → 100分の247.5 に改正。令和8年度以降は 100分の245 に改める（令和7年 総務委員会 2025-12-16 市側説明）
-</div>
-<div class="quote" style="border-left-color:#e0b464;background:#fbf7ea">
-<div class="meta">【要約】2023年12月改正の影響額</div>議員30人分で199万9,200円（令和5年 総務委員会 2023-12-18 質疑への答弁）
-</div>
-<div class="quote" style="border-left-color:#e0b464;background:#fbf7ea">
-<div class="meta">【要約】議決結果</div>第108号議案は挙手多数で可決（令和7年 総務委員会 2025-12-16）
-</div>
+<section><h2 class="sec">府中市議会での議論</h2><div class="note"><b>会議録にヒットなし：</b>年収総額（議員報酬と期末手当を合算した額）そのものを論じた発言は検出されなかった。議論は報酬月額と期末手当の支給割合に分かれて行われている。報酬月額は<a href="./giin_ronten01.html">論点1</a>、期末手当は<a href="./giin_ronten02.html">論点2</a>を参照。</div>
 <p class="quote src" style="background:none;border:none;padding:4px 0">
 出典：府中市議会会議録検索システム（<a href="https://www.city.fuchu.tokyo.dbsr.jp/" target="_blank" rel="noopener">https://www.city.fuchu.tokyo.dbsr.jp/</a>）。
-引用は著作権法第40条第1項および第32条に基づく。発言は原文のまま引用し、
-市側答弁の数値要約は【要約】と明示して区別した。</p></section>
+議員の発言の引用は著作権法第40条第1項（公開して行われた政治上の陳述）および第32条（引用）に、
+市側（執行機関職員）の答弁の引用は第32条（引用）に基づきます。
+発言部分は原文のまま引用しています（会議名・日付・役職の表示は本資料が付記したもので、
+会派名・賛否のラベルは付していません）。市側答弁の数値要約は【要約】と明示して区別しました。
+転載される場合は、必ず原典（会議録検索システムの当該会議のページ）をご確認ください。</p></section>
 <p><a class="backtop" href="./giin.html">← 論点一覧に戻る</a></p>
 </div>
 <footer>
 <h5>出典</h5>
 <ul>
-<li>各市の例規集（議会の議員の議員報酬、費用弁償及び期末手当に関する条例／政務活動費の交付に関する条例）。府中市は「府中市議会議員の議員報酬及び費用弁償等に関する条例」。各数値の出典URLは論点詳細ページの表に個別記載。</li>
-<li>類似団体の区分：デジタル庁「経済・財政・人口と暮らし」ダッシュボード（自治体区分＝一般市(15万人以上)／高齢化率35%未満／財政力指数1.0以上、16団体）。人口は住民基本台帳2025。</li>
-<li>府中市議会の議論：府中市議会会議録検索システム（引用は著作権法第40条第1項および第32条に基づく）</li>
+<li><b>議員報酬・期末手当の支給割合と加算率・議長報酬比率</b>：全国市議会議長会「市議会議員報酬に関する調査結果」（令和7年12月31日現在）<a href="https://www.si-gichokai.jp/research/teisu/" target="_blank" rel="noopener">https://www.si-gichokai.jp/research/teisu/</a>　同調査から対象37市分の数値を抽出し、本資料で集計・並べ替え・作図を行いました（編集・加工あり）。</li>
+<li><b>議員定数</b>：全国市議会議長会「市議会議員定数に関する調査結果」および各市の議員定数条例</li>
+<li><b>政務活動費・費用弁償</b>：各市の「政務活動費の交付に関する条例」「議会の議員の議員報酬、費用弁償及び期末手当に関する条例」。府中市は「府中市議会議員の議員報酬及び費用弁償等に関する条例」（<a href="https://www1.g-reiki.net/city.fuchu.tokyo/reiki_honbun/g130RG00000137.html" target="_blank" rel="noopener">例規集</a>）。各数値の出典は論点詳細ページの表に個別記載。</li>
+<li><b>類似団体の区分</b>：デジタル庁「経済・財政・人口と暮らし」ダッシュボード（自治体区分＝一般市(15万人以上)／高齢化率35%未満／財政力指数1.0以上、16団体）。同ダッシュボードの抽出結果を基に本資料で加工しました。人口は住民基本台帳2025。<b>総務省「類似団体別市町村財政指数表」の類似団体区分とは別のものです。</b></li>
+<li><b>府中市議会の議論</b>：府中市議会会議録検索システム。議員の発言の引用は著作権法第40条第1項および第32条に、市側職員の答弁の引用は第32条に基づきます。</li>
 
 </ul>
+<div class="note" style="max-width:1180px;margin:0 auto">
+<b>本資料について</b><br>
+作成：中村幸信（公認会計士）。府中市議会議員および府中市の関係者ではありません。<br>
+本資料は公開情報に基づく個人の政務調査資料であり、特定の候補者・政党への支持または
+不支持を呼びかけるものではありません。また、特定の結論・主張を示すものでもありません。<br>
+記載内容の誤り・出典に関するご指摘は、本サイトのリポジトリ
+（<a href="https://github.com/Yukinobu-Nakamura/fuchu-chiiki" target="_blank" rel="noopener">GitHub</a>）
+の Issue へお寄せください。確認のうえ、訂正履歴を残して修正します。
+</div>
 <div class="disclaimer">
 本資料は公開情報に基づく政務調査資料であり、府中市および各市の公式見解を示すものではありません。
-数値は原則として条例本文（令和7年度時点）に基づきますが、改定時期のずれ・運用実態の差により
-実際の支給額とは異なる場合があります。「未確認」と表示した項目は一次情報で確認できなかったものです。
+議員報酬・期末手当の数値は全国市議会議長会の調査結果（令和7年12月31日現在）に基づきます。
+2026年1月以降に施行された改定は反映していません。運用実態の差もあるため、
+現在の実際の支給額とは異なる場合があります。「未確認」と表示した項目は一次情報で確認できなかったものです。
 本資料は判断材料の提示にとどめ、特定の結論・主張を示すものではありません。
 </div>
 </footer>
