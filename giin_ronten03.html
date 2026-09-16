@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>論点3｜議長・副議長・委員長の格差構造｜府中市 議員報酬・活動経費</title>
+<style>
+:root{
+ --g:#558B2F; --g-d:#33691E; --g-l:#8BC34A; --accent:#2E9E6B;
+ --ink:#1d2330; --muted:#6b7280; --line:#e5e7eb; --bg:#f7f8fa; --card:#fff;
+ --warn:#9b2247; --warn-bg:#fff6f8; --warn-line:#f6c9d8;
+ --cream:#fbf7ea; --gold:#e0b464;
+ --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+ color:var(--ink);background:var(--bg);line-height:1.7;word-break:break-word;overflow-wrap:anywhere}
+
+/* サイト内ページ切替タブ */
+.site-tabbar{display:flex;gap:0;background:#12202e;padding:0 4px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:11px 20px;font-size:13.5px;font-weight:700;
+  color:#b9c6d1;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+.site-tabbar a.site-tab.is-active{color:#fff;border-bottom-color:#f2b705;background:rgba(255,255,255,.06)}
+.site-tabbar a.site-tab:hover{color:#fff;background:rgba(255,255,255,.08)}
+@media (max-width:600px){.site-tabbar a.site-tab{padding:10px 14px;font-size:12.5px}}
+
+header.hero{background:linear-gradient(100deg,var(--g),var(--g-d));color:#fff;padding:24px 26px 20px}
+header.hero .bc{font-size:12px;opacity:.9;margin-bottom:8px}
+header.hero .bc a{color:#e7f5d8;text-decoration:none;font-weight:700}
+header.hero .bc a:hover{text-decoration:underline}
+header.hero h1{margin:0;font-size:23px;font-weight:800;letter-spacing:.02em;line-height:1.45}
+header.hero .sub{opacity:.93;font-size:13px;margin-top:5px}
+.badge-asof{display:inline-block;background:rgba(255,255,255,.2);padding:3px 11px;border-radius:20px;
+ font-size:11.5px;margin-top:9px;margin-right:6px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:20px 18px 60px}
+section{margin-bottom:34px}
+h2.sec{font-size:19px;color:var(--g-d);border-left:6px solid var(--g);padding-left:12px;margin:0 0 14px}
+h3.sub{font-size:15px;color:var(--g-d);margin:22px 0 8px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+ padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,40,.04)}
+.chart-card{margin-bottom:16px}
+.chart-card h3{margin:0 0 2px;font-size:15px;color:var(--ink)}
+.chart-card .cap{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{width:100%;height:auto;display:block;font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:9px 14px;margin-top:9px;font-size:11.5px}
+.legend span{display:inline-flex;align-items:center;gap:5px;color:#444}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+.kpi .lab{font-size:11.5px;color:var(--muted);font-weight:700}
+.kpi .val{font-size:25px;font-weight:800;margin-top:2px;color:var(--g-d);line-height:1.25}
+.kpi .val small{font-size:12px;font-weight:700;color:var(--muted)}
+.kpi .sub2{font-size:11.5px;color:var(--muted);margin-top:3px}
+.two{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--card);
+ border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,40,.04);margin:10px 0}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f0f4ee;color:var(--g-d);font-weight:700;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.me td{background:#f1f8e9;font-weight:700}
+tr.me td:first-child{color:var(--g-d)}
+td.na{color:var(--muted);font-style:italic}
+.tblwrap{overflow-x:auto}
+
+/* 論点カード一覧 */
+.issue-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.issue-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+ padding:16px 18px;box-shadow:0 1px 3px rgba(20,20,40,.06);display:flex;flex-direction:column;
+ border-top:5px solid var(--g);transition:box-shadow .15s,transform .15s}
+.issue-card:hover{box-shadow:0 6px 18px rgba(20,20,40,.11);transform:translateY(-2px)}
+.issue-no{font-size:11.5px;font-weight:800;color:var(--g);letter-spacing:.06em}
+.issue-title{font-size:16px;font-weight:800;margin:3px 0 8px;color:var(--ink);line-height:1.45}
+.issue-body{font-size:13px;color:#4b5563;flex:1}
+.issue-kpi{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 4px}
+.issue-kpi span{background:#f1f8e9;color:var(--g-d);border-radius:8px;padding:5px 10px;
+ font-size:11.5px;font-weight:700}
+.issue-kpi span.warn{background:var(--warn-bg);color:var(--warn)}
+a.attach-link{display:block;margin-top:12px;border:1px solid var(--g);border-radius:9px;padding:10px;
+ font-size:12.5px;color:var(--g-d);text-align:center;text-decoration:none;font-weight:800;
+ background:#f4f9ee;transition:background .15s,color .15s}
+a.attach-link:hover{background:var(--g);color:#fff}
+
+/* 注記ボックス */
+.note{background:var(--cream);border:1px solid var(--gold);border-radius:10px;padding:11px 15px;
+ font-size:12.5px;color:#6b5618;margin:12px 0}
+.note b{color:#a8730f}
+.insight{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn);
+ border-radius:10px;padding:11px 14px;font-size:12.5px;margin:12px 0}
+.banner{background:#f2fbf6;border:1px solid #bfe6d1;color:#12603f;border-radius:10px;
+ padding:10px 14px;font-size:12.5px;margin-bottom:14px}
+.opt{background:#fff;border:1px solid var(--line);border-left:4px solid var(--g);border-radius:0 10px 10px 0;
+ padding:11px 15px;margin:9px 0;font-size:13px}
+.opt b{color:var(--g-d)}
+.quote{background:#f8faf6;border-left:3px solid var(--g-l);border-radius:0 8px 8px 0;
+ padding:10px 13px;margin:9px 0;font-size:12.5px;color:#374151}
+.quote .meta{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:700}
+.quote .src{font-size:10.5px;color:#9aa1ac;margin-top:5px;word-break:break-all}
+
+/* 二値チップ */
+.chipwrap{display:flex;flex-wrap:wrap;gap:7px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:9px;padding:6px 11px;
+ font-size:11.5px;border:1px solid var(--line);background:#fff}
+.chip b{font-weight:800;font-size:11px}
+.chip.yes{background:#fff6f8;border-color:var(--warn-line);color:var(--warn)}
+.chip.no{background:#f2fbf6;border-color:#bfe6d1;color:#12603f}
+.chip.unk{background:#f6f7f9;color:var(--muted);font-style:italic}
+.chip.me{outline:2.5px solid var(--g);outline-offset:1px;font-weight:800}
+
+footer{max-width:1180px;margin:8px auto 40px;padding:0 18px;color:var(--muted);font-size:11.5px;line-height:1.9}
+footer h5{font-size:12.5px;color:var(--g-d);margin:16px 0 6px}
+footer ul{margin:0;padding-left:16px}
+footer li{margin-bottom:4px;word-break:break-all}
+footer a{color:var(--g)}
+.disclaimer{max-width:1180px;margin:16px auto 0;font-size:11.5px;color:var(--warn);
+ background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:10px;padding:12px 15px}
+.backtop{display:inline-block;margin-top:20px;font-size:12.5px;font-weight:800;color:var(--g-d);
+ text-decoration:none;border:1px solid var(--g);border-radius:9px;padding:9px 18px;background:#f4f9ee}
+.backtop:hover{background:var(--g);color:#fff}
+</style>
+</head>
+<body>
+<nav class="site-tabbar" aria-label="サイト内ページ切替">
+<a class="site-tab" href="./">📋 地域課題マップ</a>
+<a class="site-tab" href="./zaisei.html">📊 財政ダッシュボード</a>
+<a class="site-tab is-active" href="./giin.html">💴 議員報酬・活動経費</a>
+</nav>
+<header class="hero">
+<div class="bc"><a href="./giin.html">← 論点一覧に戻る</a></div><h1>論点3｜議長・副議長・委員長の格差構造</h1>
+<div class="sub">「役職手当」は、どこに隠れているのか。</div>
+<span class="badge-asof">作成日：2026-09-16</span>
+<span class="badge-asof">政務調査資料・公開情報ベース</span>
+<span class="badge-asof">_C1</span>
+</header>
+<div class="wrap">
+<section><h2 class="sec">論点概要</h2>
+<div class="banner"><b>問い：「役職手当」は、どこに隠れているのか。</b></div>
+<p style="font-size:13.5px">地方議会には「役職手当」という名目の手当は通常存在しない。役職に応じた上乗せは、①議長・副議長の報酬月額そのものを高く設定する ②期末手当に役職加算率を上乗せする — の2つの形で実現される。ここでは議員を100としたときの議長報酬の比率で、役職格差の大きさを比較する。</p>
+<div class="grid kpis" style="margin-bottom:6px">
+<div class="card kpi"><div class="lab">府中市の値</div>
+ <div class="val">118.2<small> %</small></div></div>
+<div class="card kpi"><div class="lab">東京都26市での位置</div>
+ <div class="val">5<small> / 26位</small></div>
+ <div class="sub2">平均 117.3% を <b>0.8% 上回る</b><br>同額 2市（2市が並ぶ5位タイ）</div></div>
+<div class="card kpi"><div class="lab">類似団体16での位置</div>
+ <div class="val">12<small> / 16位</small></div>
+ <div class="sub2">平均 120.0% を <b>1.8% 下回る</b></div></div>
+</div>
+</section>
+<section><h2 class="sec">東京都26市との比較</h2>
+<div class="chart-card card">
+<h3>議長・副議長・委員長の格差構造（東京都26市・%）</h3>
+<div class="cap">出典：各市例規集の条例本文。令和7年度時点。未確認は網掛け</div>
+<svg viewBox="0 0 980 726" role="img" aria-label="議長・副議長・委員長の格差構造（東京都26市・%）">
+<line x1="140.0" y1="12" x2="140.0" y2="696" stroke="#e5e7eb" stroke-width="1"/>
+<text x="140.0" y="712" font-size="10.5" fill="#6b7280" text-anchor="middle">0.0</text>
+<line x1="435.1" y1="12" x2="435.1" y2="696" stroke="#e5e7eb" stroke-width="1"/>
+<text x="435.1" y="712" font-size="10.5" fill="#6b7280" text-anchor="middle">50.0</text>
+<line x1="730.3" y1="12" x2="730.3" y2="696" stroke="#e5e7eb" stroke-width="1"/>
+<text x="730.3" y="712" font-size="10.5" fill="#6b7280" text-anchor="middle">100.0</text>
+<text x="132" y="33.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">武蔵野市</text>
+<rect x="140" y="22.0" width="726.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="873.0" y="33.0" font-size="11" fill="#4b5563" font-weight="600">123.0</text>
+<text x="132" y="59.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">八王子市</text>
+<rect x="140" y="48.0" width="725.7" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="872.7" y="59.0" font-size="11" fill="#4b5563" font-weight="600">123.0</text>
+<text x="132" y="85.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">立川市</text>
+<rect x="140" y="74.0" width="703.9" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="850.9" y="85.0" font-size="11" fill="#4b5563" font-weight="600">119.2</text>
+<text x="132" y="111.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">西東京市</text>
+<rect x="140" y="100.0" width="701.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="848.0" y="111.0" font-size="11" fill="#4b5563" font-weight="600">118.8</text>
+<text x="132" y="137.0" font-size="11.5" text-anchor="end" fill="#33691E" font-weight="800">府中市</text>
+<rect x="140" y="126.0" width="697.6" height="14" fill="#33691E" rx="2.5"/>
+<text x="844.6" y="137.0" font-size="11" fill="#33691E" font-weight="800">118.2</text>
+<text x="132" y="163.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">小平市</text>
+<rect x="140" y="152.0" width="697.6" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="844.6" y="163.0" font-size="11" fill="#4b5563" font-weight="600">118.2</text>
+<text x="132" y="189.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">福生市</text>
+<rect x="140" y="178.0" width="696.8" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="843.8" y="189.0" font-size="11" fill="#4b5563" font-weight="600">118.0</text>
+<text x="132" y="215.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">青梅市</text>
+<rect x="140" y="204.0" width="696.1" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="843.1" y="215.0" font-size="11" fill="#4b5563" font-weight="600">117.9</text>
+<text x="132" y="241.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">羽村市</text>
+<rect x="140" y="230.0" width="695.2" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="842.2" y="241.0" font-size="11" fill="#4b5563" font-weight="600">117.8</text>
+<text x="132" y="267.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">あきる野市</text>
+<rect x="140" y="256.0" width="695.2" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="842.2" y="267.0" font-size="11" fill="#4b5563" font-weight="600">117.8</text>
+<text x="132" y="293.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">国分寺市</text>
+<rect x="140" y="282.0" width="694.4" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="841.4" y="293.0" font-size="11" fill="#4b5563" font-weight="600">117.6</text>
+<text x="132" y="319.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">狛江市</text>
+<rect x="140" y="308.0" width="694.4" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="841.4" y="319.0" font-size="11" fill="#4b5563" font-weight="600">117.6</text>
+<text x="132" y="345.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">稲城市</text>
+<rect x="140" y="334.0" width="693.7" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="840.7" y="345.0" font-size="11" fill="#4b5563" font-weight="600">117.5</text>
+<text x="132" y="371.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">小金井市</text>
+<rect x="140" y="360.0" width="692.7" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="839.7" y="371.0" font-size="11" fill="#4b5563" font-weight="600">117.3</text>
+<text x="132" y="397.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">国立市</text>
+<rect x="140" y="386.0" width="692.7" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="839.7" y="397.0" font-size="11" fill="#4b5563" font-weight="600">117.3</text>
+<text x="132" y="423.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">多摩市</text>
+<rect x="140" y="412.0" width="691.8" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="838.8" y="423.0" font-size="11" fill="#4b5563" font-weight="600">117.2</text>
+<text x="132" y="449.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">三鷹市</text>
+<rect x="140" y="438.0" width="686.9" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="833.9" y="449.0" font-size="11" fill="#4b5563" font-weight="600">116.4</text>
+<text x="132" y="475.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">調布市</text>
+<rect x="140" y="464.0" width="686.9" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="833.9" y="475.0" font-size="11" fill="#4b5563" font-weight="600">116.4</text>
+<text x="132" y="501.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">町田市</text>
+<rect x="140" y="490.0" width="686.9" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="833.9" y="501.0" font-size="11" fill="#4b5563" font-weight="600">116.4</text>
+<text x="132" y="527.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">武蔵村山市</text>
+<rect x="140" y="516.0" width="685.3" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="832.3" y="527.0" font-size="11" fill="#4b5563" font-weight="600">116.1</text>
+<text x="132" y="553.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">東大和市</text>
+<rect x="140" y="542.0" width="681.8" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="828.8" y="553.0" font-size="11" fill="#4b5563" font-weight="600">115.5</text>
+<text x="132" y="579.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">昭島市</text>
+<rect x="140" y="568.0" width="679.4" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="826.4" y="579.0" font-size="11" fill="#4b5563" font-weight="600">115.1</text>
+<text x="132" y="605.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">東村山市</text>
+<rect x="140" y="594.0" width="679.1" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="826.1" y="605.0" font-size="11" fill="#4b5563" font-weight="600">115.1</text>
+<text x="132" y="631.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">日野市</text>
+<rect x="140" y="620.0" width="676.9" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="823.9" y="631.0" font-size="11" fill="#4b5563" font-weight="600">114.7</text>
+<text x="132" y="657.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">東久留米市</text>
+<rect x="140" y="646.0" width="676.4" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="823.4" y="657.0" font-size="11" fill="#4b5563" font-weight="600">114.6</text>
+<text x="132" y="683.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">清瀬市</text>
+<rect x="140" y="672.0" width="672.9" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="819.9" y="683.0" font-size="11" fill="#4b5563" font-weight="600">114.0</text>
+</svg>
+<div class="legend"><span><i style="background:#33691E"></i>府中市</span><span><i style="background:#c3cbd4"></i>他市</span></div>
+</div>
+<div class="tblwrap"><table>
+<caption style="text-align:left;font-size:12px;color:var(--muted);padding:6px 2px">東京都26市（降順）</caption>
+<thead><tr><th>順位</th><th>自治体</th><th>議長・副議長・委員長の格差構造（%）</th><th>出典</th></tr></thead>
+<tbody><tr><td class="num">1</td><td>武蔵野市</td><td class="num">123.0</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">2</td><td>八王子市</td><td class="num">123.0</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">3</td><td>立川市</td><td class="num">119.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">4</td><td>西東京市</td><td class="num">118.8</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr class="me"><td class="num">5</td><td>府中市</td><td class="num">118.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">5</td><td>小平市</td><td class="num">118.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">7</td><td>福生市</td><td class="num">118.0</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">8</td><td>青梅市</td><td class="num">117.9</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">9</td><td>羽村市</td><td class="num">117.8</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">9</td><td>あきる野市</td><td class="num">117.8</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">11</td><td>国分寺市</td><td class="num">117.6</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">11</td><td>狛江市</td><td class="num">117.6</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">13</td><td>稲城市</td><td class="num">117.5</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">14</td><td>小金井市</td><td class="num">117.3</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">14</td><td>国立市</td><td class="num">117.3</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">16</td><td>多摩市</td><td class="num">117.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">17</td><td>三鷹市</td><td class="num">116.4</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">17</td><td>調布市</td><td class="num">116.4</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">17</td><td>町田市</td><td class="num">116.4</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">20</td><td>武蔵村山市</td><td class="num">116.1</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">21</td><td>東大和市</td><td class="num">115.5</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">22</td><td>昭島市</td><td class="num">115.1</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">23</td><td>東村山市</td><td class="num">115.1</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">24</td><td>日野市</td><td class="num">114.7</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">25</td><td>東久留米市</td><td class="num">114.6</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">26</td><td>清瀬市</td><td class="num">114.0</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr></tbody></table></div>
+</section>
+<section><h2 class="sec">類似団体16市との比較</h2>
+<div class="note">デジタル庁「経済・財政・人口と暮らし」の類似団体（一般市15万人以上／高齢化率35%未満／財政力指数1.0以上）。16団体のうち5市は東京都内のため、26市比較と一部重複します。</div>
+<div class="chart-card card">
+<h3>議長・副議長・委員長の格差構造（類似団体16市・%）</h3>
+<div class="cap">出典：各市例規集の条例本文。令和7年度時点</div>
+<svg viewBox="0 0 980 466" role="img" aria-label="議長・副議長・委員長の格差構造（類似団体16市・%）">
+<line x1="140.0" y1="12" x2="140.0" y2="436" stroke="#e5e7eb" stroke-width="1"/>
+<text x="140.0" y="452" font-size="10.5" fill="#6b7280" text-anchor="middle">0.0</text>
+<line x1="429.9" y1="12" x2="429.9" y2="436" stroke="#e5e7eb" stroke-width="1"/>
+<text x="429.9" y="452" font-size="10.5" fill="#6b7280" text-anchor="middle">50.0</text>
+<line x1="719.8" y1="12" x2="719.8" y2="436" stroke="#e5e7eb" stroke-width="1"/>
+<text x="719.8" y="452" font-size="10.5" fill="#6b7280" text-anchor="middle">100.0</text>
+<text x="132" y="33.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">厚木市 [神奈川県]</text>
+<rect x="140" y="22.0" width="726.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="873.0" y="33.0" font-size="11" fill="#4b5563" font-weight="600">125.2</text>
+<text x="132" y="59.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">富士市 [静岡県]</text>
+<rect x="140" y="48.0" width="722.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="869.0" y="59.0" font-size="11" fill="#4b5563" font-weight="600">124.5</text>
+<text x="132" y="85.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">武蔵野市</text>
+<rect x="140" y="74.0" width="713.1" height="14" fill="#9fb3c8" rx="2.5"/>
+<text x="860.1" y="85.0" font-size="11" fill="#4b5563" font-weight="600">123.0</text>
+<text x="132" y="111.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">藤沢市 [神奈川県]</text>
+<rect x="140" y="100.0" width="708.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="855.0" y="111.0" font-size="11" fill="#4b5563" font-weight="600">122.1</text>
+<text x="132" y="137.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">浦安市 [千葉県]</text>
+<rect x="140" y="126.0" width="702.4" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="849.4" y="137.0" font-size="11" fill="#4b5563" font-weight="600">121.2</text>
+<text x="132" y="163.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">刈谷市 [愛知県]</text>
+<rect x="140" y="152.0" width="701.8" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="848.8" y="163.0" font-size="11" fill="#4b5563" font-weight="600">121.1</text>
+<text x="132" y="189.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">鎌倉市 [神奈川県]</text>
+<rect x="140" y="178.0" width="700.8" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="847.8" y="189.0" font-size="11" fill="#4b5563" font-weight="600">120.9</text>
+<text x="132" y="215.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">安城市 [愛知県]</text>
+<rect x="140" y="204.0" width="695.2" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="842.2" y="215.0" font-size="11" fill="#4b5563" font-weight="600">119.9</text>
+<text x="132" y="241.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">市川市 [千葉県]</text>
+<rect x="140" y="230.0" width="695.0" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="842.0" y="241.0" font-size="11" fill="#4b5563" font-weight="600">119.9</text>
+<text x="132" y="267.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">つくば市 [茨城県]</text>
+<rect x="140" y="256.0" width="692.9" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="839.9" y="267.0" font-size="11" fill="#4b5563" font-weight="600">119.5</text>
+<text x="132" y="293.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">立川市</text>
+<rect x="140" y="282.0" width="691.3" height="14" fill="#9fb3c8" rx="2.5"/>
+<text x="838.3" y="293.0" font-size="11" fill="#4b5563" font-weight="600">119.2</text>
+<text x="132" y="319.0" font-size="11.5" text-anchor="end" fill="#33691E" font-weight="800">府中市</text>
+<rect x="140" y="308.0" width="685.2" height="14" fill="#33691E" rx="2.5"/>
+<text x="832.2" y="319.0" font-size="11" fill="#33691E" font-weight="800">118.2</text>
+<text x="132" y="345.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">四日市市 [三重県]</text>
+<rect x="140" y="334.0" width="680.1" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="827.1" y="345.0" font-size="11" fill="#4b5563" font-weight="600">117.3</text>
+<text x="132" y="371.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">調布市</text>
+<rect x="140" y="360.0" width="674.6" height="14" fill="#9fb3c8" rx="2.5"/>
+<text x="821.6" y="371.0" font-size="11" fill="#4b5563" font-weight="600">116.4</text>
+<text x="132" y="397.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">三鷹市</text>
+<rect x="140" y="386.0" width="674.6" height="14" fill="#9fb3c8" rx="2.5"/>
+<text x="821.6" y="397.0" font-size="11" fill="#4b5563" font-weight="600">116.4</text>
+<text x="132" y="423.0" font-size="11.5" text-anchor="end" fill="#1d2330" font-weight="400">市原市 [千葉県]</text>
+<rect x="140" y="412.0" width="668.5" height="14" fill="#c3cbd4" rx="2.5"/>
+<text x="815.5" y="423.0" font-size="11" fill="#4b5563" font-weight="600">115.3</text>
+</svg>
+<div class="legend"><span><i style="background:#33691E"></i>府中市</span><span><i style="background:#9fb3c8"></i>東京都内の他市</span><span><i style="background:#c3cbd4"></i>都外</span></div>
+</div>
+<div class="tblwrap"><table>
+<caption style="text-align:left;font-size:12px;color:var(--muted);padding:6px 2px">類似団体16市（降順）</caption>
+<thead><tr><th>順位</th><th>自治体</th><th>議長・副議長・委員長の格差構造（%）</th><th>出典</th></tr></thead>
+<tbody><tr><td class="num">1</td><td>厚木市<small>[神奈川]</small></td><td class="num">125.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">2</td><td>富士市<small>[静岡]</small></td><td class="num">124.5</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">3</td><td>武蔵野市</td><td class="num">123.0</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">4</td><td>藤沢市<small>[神奈川]</small></td><td class="num">122.1</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">5</td><td>浦安市<small>[千葉]</small></td><td class="num">121.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">6</td><td>刈谷市<small>[愛知]</small></td><td class="num">121.1</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">7</td><td>鎌倉市<small>[神奈川]</small></td><td class="num">120.9</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">8</td><td>安城市<small>[愛知]</small></td><td class="num">119.9</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">9</td><td>市川市<small>[千葉]</small></td><td class="num">119.9</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">10</td><td>つくば市<small>[茨城]</small></td><td class="num">119.5</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">11</td><td>立川市</td><td class="num">119.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr class="me"><td class="num">12</td><td>府中市</td><td class="num">118.2</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">13</td><td>四日市市<small>[三重]</small></td><td class="num">117.3</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">14</td><td>調布市</td><td class="num">116.4</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">14</td><td>三鷹市</td><td class="num">116.4</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr><tr><td class="num">16</td><td>市原市<small>[千葉]</small></td><td class="num">115.3</td><td><a href="https://www.si-gichokai.jp/research/teisu/__icsFiles/afieldfile/2026/06/04/20260604_housyu_tyousa.pdf" target="_blank" rel="noopener">条例</a></td></tr></tbody></table></div>
+</section>
+<section><h2 class="sec">取りうる選択肢</h2>
+<p style="font-size:12.5px;color:var(--muted)">
+本資料は判断材料の提示にとどめ、いずれかを推奨するものではありません。</p>
+<div class="opt"><b>A 現状維持</b>　議長・副議長の職責に応じた現行の格差を維持する。</div><div class="opt"><b>B 格差の圧縮</b>　議長・副議長の報酬を議員に近づける。</div><div class="opt"><b>C 委員長への配分</b>　議長・副議長への集中を薄め、常任委員長等へ配分する。</div><div class="opt"><b>D 役職加算の廃止</b>　期末手当の役職加算をやめ、格差を報酬月額のみで表現する（見える化）。</div></section>
+<section><h2 class="sec">府中市議会での議論</h2><div class="note"><b>会議録にヒットなし：</b>議長・副議長・委員長の報酬格差そのものを論じた発言は検出されなかった（特別職報酬等審議会の所掌として言及されるにとどまる）。</div>
+<p class="quote src" style="background:none;border:none;padding:4px 0">
+出典：府中市議会会議録検索システム（<a href="https://www.city.fuchu.tokyo.dbsr.jp/" target="_blank" rel="noopener">https://www.city.fuchu.tokyo.dbsr.jp/</a>）。
+引用は著作権法第40条第1項および第32条に基づく。発言は原文のまま引用し、
+市側答弁の数値要約は【要約】と明示して区別した。</p></section>
+<p><a class="backtop" href="./giin.html">← 論点一覧に戻る</a></p>
+</div>
+<footer>
+<h5>出典</h5>
+<ul>
+<li>各市の例規集（議会の議員の議員報酬、費用弁償及び期末手当に関する条例／政務活動費の交付に関する条例）。府中市は「府中市議会議員の議員報酬及び費用弁償等に関する条例」。各数値の出典URLは論点詳細ページの表に個別記載。</li>
+<li>類似団体の区分：デジタル庁「経済・財政・人口と暮らし」ダッシュボード（自治体区分＝一般市(15万人以上)／高齢化率35%未満／財政力指数1.0以上、16団体）。人口は住民基本台帳2025。</li>
+<li>府中市議会の議論：府中市議会会議録検索システム（引用は著作権法第40条第1項および第32条に基づく）</li>
+
+</ul>
+<div class="disclaimer">
+本資料は公開情報に基づく政務調査資料であり、府中市および各市の公式見解を示すものではありません。
+数値は原則として条例本文（令和7年度時点）に基づきますが、改定時期のずれ・運用実態の差により
+実際の支給額とは異なる場合があります。「未確認」と表示した項目は一次情報で確認できなかったものです。
+本資料は判断材料の提示にとどめ、特定の結論・主張を示すものではありません。
+</div>
+</footer>
+</body>
+</html>

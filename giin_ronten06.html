@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>論点6｜費用弁償（会議出席の日当・公務旅費）｜府中市 議員報酬・活動経費</title>
+<style>
+:root{
+ --g:#558B2F; --g-d:#33691E; --g-l:#8BC34A; --accent:#2E9E6B;
+ --ink:#1d2330; --muted:#6b7280; --line:#e5e7eb; --bg:#f7f8fa; --card:#fff;
+ --warn:#9b2247; --warn-bg:#fff6f8; --warn-line:#f6c9d8;
+ --cream:#fbf7ea; --gold:#e0b464;
+ --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+ color:var(--ink);background:var(--bg);line-height:1.7;word-break:break-word;overflow-wrap:anywhere}
+
+/* サイト内ページ切替タブ */
+.site-tabbar{display:flex;gap:0;background:#12202e;padding:0 4px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:11px 20px;font-size:13.5px;font-weight:700;
+  color:#b9c6d1;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+.site-tabbar a.site-tab.is-active{color:#fff;border-bottom-color:#f2b705;background:rgba(255,255,255,.06)}
+.site-tabbar a.site-tab:hover{color:#fff;background:rgba(255,255,255,.08)}
+@media (max-width:600px){.site-tabbar a.site-tab{padding:10px 14px;font-size:12.5px}}
+
+header.hero{background:linear-gradient(100deg,var(--g),var(--g-d));color:#fff;padding:24px 26px 20px}
+header.hero .bc{font-size:12px;opacity:.9;margin-bottom:8px}
+header.hero .bc a{color:#e7f5d8;text-decoration:none;font-weight:700}
+header.hero .bc a:hover{text-decoration:underline}
+header.hero h1{margin:0;font-size:23px;font-weight:800;letter-spacing:.02em;line-height:1.45}
+header.hero .sub{opacity:.93;font-size:13px;margin-top:5px}
+.badge-asof{display:inline-block;background:rgba(255,255,255,.2);padding:3px 11px;border-radius:20px;
+ font-size:11.5px;margin-top:9px;margin-right:6px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:20px 18px 60px}
+section{margin-bottom:34px}
+h2.sec{font-size:19px;color:var(--g-d);border-left:6px solid var(--g);padding-left:12px;margin:0 0 14px}
+h3.sub{font-size:15px;color:var(--g-d);margin:22px 0 8px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+ padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,40,.04)}
+.chart-card{margin-bottom:16px}
+.chart-card h3{margin:0 0 2px;font-size:15px;color:var(--ink)}
+.chart-card .cap{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{width:100%;height:auto;display:block;font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:9px 14px;margin-top:9px;font-size:11.5px}
+.legend span{display:inline-flex;align-items:center;gap:5px;color:#444}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+.kpi .lab{font-size:11.5px;color:var(--muted);font-weight:700}
+.kpi .val{font-size:25px;font-weight:800;margin-top:2px;color:var(--g-d);line-height:1.25}
+.kpi .val small{font-size:12px;font-weight:700;color:var(--muted)}
+.kpi .sub2{font-size:11.5px;color:var(--muted);margin-top:3px}
+.two{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--card);
+ border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,40,.04);margin:10px 0}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f0f4ee;color:var(--g-d);font-weight:700;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.me td{background:#f1f8e9;font-weight:700}
+tr.me td:first-child{color:var(--g-d)}
+td.na{color:var(--muted);font-style:italic}
+.tblwrap{overflow-x:auto}
+
+/* 論点カード一覧 */
+.issue-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.issue-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+ padding:16px 18px;box-shadow:0 1px 3px rgba(20,20,40,.06);display:flex;flex-direction:column;
+ border-top:5px solid var(--g);transition:box-shadow .15s,transform .15s}
+.issue-card:hover{box-shadow:0 6px 18px rgba(20,20,40,.11);transform:translateY(-2px)}
+.issue-no{font-size:11.5px;font-weight:800;color:var(--g);letter-spacing:.06em}
+.issue-title{font-size:16px;font-weight:800;margin:3px 0 8px;color:var(--ink);line-height:1.45}
+.issue-body{font-size:13px;color:#4b5563;flex:1}
+.issue-kpi{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 4px}
+.issue-kpi span{background:#f1f8e9;color:var(--g-d);border-radius:8px;padding:5px 10px;
+ font-size:11.5px;font-weight:700}
+.issue-kpi span.warn{background:var(--warn-bg);color:var(--warn)}
+a.attach-link{display:block;margin-top:12px;border:1px solid var(--g);border-radius:9px;padding:10px;
+ font-size:12.5px;color:var(--g-d);text-align:center;text-decoration:none;font-weight:800;
+ background:#f4f9ee;transition:background .15s,color .15s}
+a.attach-link:hover{background:var(--g);color:#fff}
+
+/* 注記ボックス */
+.note{background:var(--cream);border:1px solid var(--gold);border-radius:10px;padding:11px 15px;
+ font-size:12.5px;color:#6b5618;margin:12px 0}
+.note b{color:#a8730f}
+.insight{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn);
+ border-radius:10px;padding:11px 14px;font-size:12.5px;margin:12px 0}
+.banner{background:#f2fbf6;border:1px solid #bfe6d1;color:#12603f;border-radius:10px;
+ padding:10px 14px;font-size:12.5px;margin-bottom:14px}
+.opt{background:#fff;border:1px solid var(--line);border-left:4px solid var(--g);border-radius:0 10px 10px 0;
+ padding:11px 15px;margin:9px 0;font-size:13px}
+.opt b{color:var(--g-d)}
+.quote{background:#f8faf6;border-left:3px solid var(--g-l);border-radius:0 8px 8px 0;
+ padding:10px 13px;margin:9px 0;font-size:12.5px;color:#374151}
+.quote .meta{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:700}
+.quote .src{font-size:10.5px;color:#9aa1ac;margin-top:5px;word-break:break-all}
+
+/* 二値チップ */
+.chipwrap{display:flex;flex-wrap:wrap;gap:7px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:9px;padding:6px 11px;
+ font-size:11.5px;border:1px solid var(--line);background:#fff}
+.chip b{font-weight:800;font-size:11px}
+.chip.yes{background:#fff6f8;border-color:var(--warn-line);color:var(--warn)}
+.chip.no{background:#f2fbf6;border-color:#bfe6d1;color:#12603f}
+.chip.unk{background:#f6f7f9;color:var(--muted);font-style:italic}
+.chip.me{outline:2.5px solid var(--g);outline-offset:1px;font-weight:800}
+
+footer{max-width:1180px;margin:8px auto 40px;padding:0 18px;color:var(--muted);font-size:11.5px;line-height:1.9}
+footer h5{font-size:12.5px;color:var(--g-d);margin:16px 0 6px}
+footer ul{margin:0;padding-left:16px}
+footer li{margin-bottom:4px;word-break:break-all}
+footer a{color:var(--g)}
+.disclaimer{max-width:1180px;margin:16px auto 0;font-size:11.5px;color:var(--warn);
+ background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:10px;padding:12px 15px}
+.backtop{display:inline-block;margin-top:20px;font-size:12.5px;font-weight:800;color:var(--g-d);
+ text-decoration:none;border:1px solid var(--g);border-radius:9px;padding:9px 18px;background:#f4f9ee}
+.backtop:hover{background:var(--g);color:#fff}
+</style>
+</head>
+<body>
+<nav class="site-tabbar" aria-label="サイト内ページ切替">
+<a class="site-tab" href="./">📋 地域課題マップ</a>
+<a class="site-tab" href="./zaisei.html">📊 財政ダッシュボード</a>
+<a class="site-tab is-active" href="./giin.html">💴 議員報酬・活動経費</a>
+</nav>
+<header class="hero">
+<div class="bc"><a href="./giin.html">← 論点一覧に戻る</a></div><h1>論点6｜費用弁償（会議出席の日当・公務旅費）</h1>
+<div class="sub">議会に出席することへの日当は、まだ残っているのか。</div>
+<span class="badge-asof">作成日：2026-09-16</span>
+<span class="badge-asof">政務調査資料・公開情報ベース</span>
+<span class="badge-asof">_C1</span>
+</header>
+<div class="wrap">
+<section><h2 class="sec">論点概要</h2>
+<div class="banner"><b>問い：議会に出席することへの日当は、まだ残っているのか。</b></div>
+<p style="font-size:13.5px">費用弁償とは、議員の職務に伴う実費を補填する制度で、(a) 本会議・委員会への出席そのものに支給する日当 と (b) 公務出張・行政視察の旅費 の2つに分かれる。(a) はかつて多くの市にあったが、「報酬に含まれるべき」「二重取りではないか」との批判から廃止が相次いだ。(b) は「日当◯円・宿泊料◯円」と定額を定める市と、実費精算とする市がある。</p>
+
+</section>
+<section><h2 class="sec">(a) 会議出席への日当</h2>
+<div class="banner">対象37市（東京都26市＋類似団体16市。重複5市を除いたユニーク数）のうち、
+条例本文で確認できた範囲では <b>会議出席そのものに日当を支給している市は 0市</b>、
+<b>「なし」と確認できた市が 21市</b>、残り16市は未確認です。
+議会・委員会への出席は議員報酬に含まれるという整理が主流になっています。</div>
+<div class="chart-card card">
+<h3>東京都26市</h3>
+<div class="cap">出典：各市の費用弁償条例。カードにカーソルを合わせると根拠条文の要旨が出ます</div>
+<div class="chipwrap">
+<span class="chip no" title="規定なし（会議出席日当の定めは確認されず。出張時の日当のみ規定）">あきる野市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">三鷹市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例第5条・第6条は公務出張旅費のみを規定し、会議出席日当の規定は見当たらない）">八王子市<b>なし</b></span>
+<span class="chip no" title="規定なし（第5条に会議出席日当の明記なし）">国分寺市<b>なし</b></span>
+<span class="chip no" title="規定なし（現行条例に会議出席日当の定めなし）">小平市<b>なし</b></span>
+<span class="chip no me" title="規定なし（第6条は招集に応じた往復の旅行および公務を帯びた旅行に対する旅費のみを規定し、会議出席そのものに対する日当の規定はない）">府中市<b>なし</b></span>
+<span class="chip no" title="規定なし（現行条例に会議出席日当の定めなし）">日野市<b>なし</b></span>
+<span class="chip no" title="規定なし（第5条2項の列挙項目に「日当」を含むが、これは公務出張（旅行）に伴う旅費体系の一部であり、本会議・委員会等への出席そのものに対する別建ての日当ではない）">昭島市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例は公務旅行時の費用弁償のみを規定。会議出席日当の規定は確認できず、月額報酬制）">東久留米市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例は公務出張時の費用弁償のみを規定。会議出席日当の規定は確認できず、月額報酬制）">東大和市<b>なし</b></span>
+<span class="chip no" title="規定なし（現行条例に会議出席日当の定めなし）">東村山市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例中に会議出席に対する日当の定めは確認されず。旅費〈第5条〉のみ規定）">武蔵村山市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">武蔵野市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例は市外出張時の費用弁償のみを規定。通常の本会議・委員会出席に対する日当規定は確認できず、月額報酬制）">福生市<b>なし</b></span>
+<span class="chip no" title="規定なし（会議出席日当の定めは確認されず。市外出張時の日当のみ規定）">稲城市<b>なし</b></span>
+<span class="chip unk" title="">国立市<b>未確認</b></span>
+<span class="chip unk" title="">多摩市<b>未確認</b></span>
+<span class="chip unk" title="">小金井市<b>未確認</b></span>
+<span class="chip unk" title="">清瀬市<b>未確認</b></span>
+<span class="chip unk" title="">狛江市<b>未確認</b></span>
+<span class="chip unk" title="">町田市<b>未確認</b></span>
+<span class="chip unk" title="">立川市<b>未確認</b></span>
+<span class="chip unk" title="">羽村市<b>未確認</b></span>
+<span class="chip unk" title="">西東京市<b>未確認</b></span>
+<span class="chip unk" title="">調布市<b>未確認</b></span>
+<span class="chip unk" title="">青梅市<b>未確認</b></span>
+</div></div>
+<div class="chart-card card">
+<h3>類似団体16市</h3>
+<div class="cap">出典：各市の費用弁償条例</div>
+<div class="chipwrap">
+<span class="chip no" title="1日2,000円（招集に応じて議会・委員会又は法第100条第12項の場に出席したとき。議長・副議長・議員とも同額。オンライン会議システムでの参加時は支給なし）">つくば市[茨城]<b>なし</b></span>
+<span class="chip no" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">三鷹市<b>なし</b></span>
+<span class="chip no" title="規定なし（現行条例（第5条）に会議出席日当の定めはなく、費用弁償は旅費のみ規定）">刈谷市[愛知]<b>なし</b></span>
+<span class="chip no" title="廃止（平成17年4月）。平成14年4月から本会議及び常任・議会運営・特別委員会に出席した場合に日額2,500円の費用弁償が支給されていたが、平成17年4月に廃止された。">厚木市[神奈川]<b>なし</b></span>
+<span class="chip no" title="なし（定額の「会議出席日当」制度は確認されず）">四日市市[三重]<b>なし</b></span>
+<span class="chip no" title="なし（本会議・委員会出席自体に対する日当の規定はなし。報酬月額制のため）">市原市[千葉]<b>なし</b></span>
+<span class="chip no" title="廃止（平成22年）">市川市[千葉]<b>なし</b></span>
+<span class="chip no me" title="規定なし（第6条は招集に応じた往復の旅行および公務を帯びた旅行に対する旅費のみを規定し、会議出席そのものに対する日当の規定はない）">府中市<b>なし</b></span>
+<span class="chip no" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">武蔵野市<b>なし</b></span>
+<span class="chip unk" title="">安城市[愛知]<b>未確認</b></span>
+<span class="chip unk" title="">富士市[静岡]<b>未確認</b></span>
+<span class="chip unk" title="">浦安市[千葉]<b>未確認</b></span>
+<span class="chip unk" title="">立川市<b>未確認</b></span>
+<span class="chip unk" title="">藤沢市[神奈川]<b>未確認</b></span>
+<span class="chip unk" title="">調布市<b>未確認</b></span>
+<span class="chip unk" title="">鎌倉市[神奈川]<b>未確認</b></span>
+</div></div>
+</section>
+<section><h2 class="sec">(b) 公務旅費（出張・行政視察）</h2>
+<div class="note">多くの市で議員の旅費は「市長の例による」「職員の旅費条例の例による」と
+<b>参照規定</b>になっており、日当・宿泊料の具体的な金額は参照先の別条例に置かれています。
+その別条例まで到達できなかった市は「未確認」としています。</div>
+<div class="chart-card card">
+<h3>東京都26市（定額／実費の別）</h3>
+<div class="cap">出典：各市の費用弁償条例</div>
+<div class="chipwrap">
+<span class="chip yes" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">三鷹市<b>定額</b></span>
+<span class="chip yes" title="規定なし（条例第5条・第6条は公務出張旅費のみを規定し、会議出席日当の規定は見当たらない）">八王子市<b>定額</b></span>
+<span class="chip yes" title="規定なし（現行条例に会議出席日当の定めなし）">小平市<b>定額</b></span>
+<span class="chip yes me" title="規定なし（第6条は招集に応じた往復の旅行および公務を帯びた旅行に対する旅費のみを規定し、会議出席そのものに対する日当の規定はない）">府中市<b>定額</b></span>
+<span class="chip yes" title="規定なし（現行条例に会議出席日当の定めなし）">日野市<b>定額</b></span>
+<span class="chip yes" title="規定なし（第5条2項の列挙項目に「日当」を含むが、これは公務出張（旅行）に伴う旅費体系の一部であり、本会議・委員会等への出席そのものに対する別建ての日当ではない）">昭島市<b>定額</b></span>
+<span class="chip yes" title="規定なし（現行条例に会議出席日当の定めなし）">東村山市<b>定額</b></span>
+<span class="chip yes" title="規定なし（条例中に会議出席に対する日当の定めは確認されず。旅費〈第5条〉のみ規定）">武蔵村山市<b>定額</b></span>
+<span class="chip yes" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">武蔵野市<b>定額</b></span>
+<span class="chip yes" title="規定なし（会議出席日当の定めは確認されず。出張時の日当のみ規定）">あきる野市<b>定額＋実費</b></span>
+<span class="chip yes" title="規定なし（条例は公務旅行時の費用弁償のみを規定。会議出席日当の規定は確認できず、月額報酬制）">東久留米市<b>定額＋実費</b></span>
+<span class="chip yes" title="規定なし（条例は公務出張時の費用弁償のみを規定。会議出席日当の規定は確認できず、月額報酬制）">東大和市<b>定額＋実費</b></span>
+<span class="chip yes" title="規定なし（条例は市外出張時の費用弁償のみを規定。通常の本会議・委員会出席に対する日当規定は確認できず、月額報酬制）">福生市<b>定額＋実費</b></span>
+<span class="chip yes" title="規定なし（会議出席日当の定めは確認されず。市外出張時の日当のみ規定）">稲城市<b>定額＋実費</b></span>
+<span class="chip unk" title="規定なし（第5条に会議出席日当の明記なし）">国分寺市<b>未確認</b></span>
+<span class="chip unk" title="">国立市<b>未確認</b></span>
+<span class="chip unk" title="">多摩市<b>未確認</b></span>
+<span class="chip unk" title="">小金井市<b>未確認</b></span>
+<span class="chip unk" title="">清瀬市<b>未確認</b></span>
+<span class="chip unk" title="">狛江市<b>未確認</b></span>
+<span class="chip unk" title="">町田市<b>未確認</b></span>
+<span class="chip unk" title="">立川市<b>未確認</b></span>
+<span class="chip unk" title="">羽村市<b>未確認</b></span>
+<span class="chip unk" title="">西東京市<b>未確認</b></span>
+<span class="chip unk" title="">調布市<b>未確認</b></span>
+<span class="chip unk" title="">青梅市<b>未確認</b></span>
+</div></div>
+<div class="chart-card card">
+<h3>類似団体16市（定額／実費の別）</h3>
+<div class="cap">出典：各市の費用弁償条例</div>
+<div class="chipwrap">
+<span class="chip yes" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">三鷹市<b>定額</b></span>
+<span class="chip yes" title="">富士市[静岡]<b>定額</b></span>
+<span class="chip yes me" title="規定なし（第6条は招集に応じた往復の旅行および公務を帯びた旅行に対する旅費のみを規定し、会議出席そのものに対する日当の規定はない）">府中市<b>定額</b></span>
+<span class="chip yes" title="規定なし（条例は公務出張旅費のみを規定、会議出席日当の規定は見当たらない）">武蔵野市<b>定額</b></span>
+<span class="chip yes" title="1日2,000円（招集に応じて議会・委員会又は法第100条第12項の場に出席したとき。議長・副議長・議員とも同額。オンライン会議システムでの参加時は支給なし）">つくば市[茨城]<b>定額＋実費</b></span>
+<span class="chip yes" title="規定なし（現行条例（第5条）に会議出席日当の定めはなく、費用弁償は旅費のみ規定）">刈谷市[愛知]<b>定額＋実費</b></span>
+<span class="chip yes" title="廃止（平成17年4月）。平成14年4月から本会議及び常任・議会運営・特別委員会に出席した場合に日額2,500円の費用弁償が支給されていたが、平成17年4月に廃止された。">厚木市[神奈川]<b>定額＋実費</b></span>
+<span class="chip yes" title="なし（定額の「会議出席日当」制度は確認されず）">四日市市[三重]<b>定額＋実費</b></span>
+<span class="chip unk" title="">安城市[愛知]<b>未確認</b></span>
+<span class="chip unk" title="なし（本会議・委員会出席自体に対する日当の規定はなし。報酬月額制のため）">市原市[千葉]<b>未確認</b></span>
+<span class="chip unk" title="廃止（平成22年）">市川市[千葉]<b>未確認</b></span>
+<span class="chip unk" title="">浦安市[千葉]<b>未確認</b></span>
+<span class="chip unk" title="">立川市<b>未確認</b></span>
+<span class="chip unk" title="">藤沢市[神奈川]<b>未確認</b></span>
+<span class="chip unk" title="">調布市<b>未確認</b></span>
+<span class="chip unk" title="">鎌倉市[神奈川]<b>未確認</b></span>
+</div></div>
+</section>
+<section><h2 class="sec">取りうる選択肢</h2>
+<p style="font-size:12.5px;color:var(--muted)">
+本資料は判断材料の提示にとどめ、いずれかを推奨するものではありません。</p>
+<div class="opt"><b>A 現状維持</b></div><div class="opt"><b>B 旅費の実費精算化</b>　日当・宿泊料の定額をやめ、実費のみとする。</div><div class="opt"><b>C 日当のみ廃止</b>　宿泊料は定額のまま、出張日当を廃止する。</div><div class="opt"><b>D 視察報告の公開義務化</b>　額の議論とは別に、視察報告書の公開を必須にする。</div></section>
+<section><h2 class="sec">府中市議会での議論</h2><div class="note"><b>会議録にヒットなし：</b>2019〜2026年の府中市議会会議録を「費用弁償」で検索したが、制度の存廃・金額を論じた発言は検出されなかった。条例名（府中市議会議員の議員報酬及び費用弁償等に関する条例）としての登場にとどまる。</div>
+<div class="note"><b>会議録にヒットなし：</b>「日当」「行政視察」での検索でも、費用の細目を論じた発言は検出されなかった。</div>
+<p class="quote src" style="background:none;border:none;padding:4px 0">
+出典：府中市議会会議録検索システム（<a href="https://www.city.fuchu.tokyo.dbsr.jp/" target="_blank" rel="noopener">https://www.city.fuchu.tokyo.dbsr.jp/</a>）。
+引用は著作権法第40条第1項および第32条に基づく。発言は原文のまま引用し、
+市側答弁の数値要約は【要約】と明示して区別した。</p></section>
+<p><a class="backtop" href="./giin.html">← 論点一覧に戻る</a></p>
+</div>
+<footer>
+<h5>出典</h5>
+<ul>
+<li>各市の例規集（議会の議員の議員報酬、費用弁償及び期末手当に関する条例／政務活動費の交付に関する条例）。府中市は「府中市議会議員の議員報酬及び費用弁償等に関する条例」。各数値の出典URLは論点詳細ページの表に個別記載。</li>
+<li>類似団体の区分：デジタル庁「経済・財政・人口と暮らし」ダッシュボード（自治体区分＝一般市(15万人以上)／高齢化率35%未満／財政力指数1.0以上、16団体）。人口は住民基本台帳2025。</li>
+<li>府中市議会の議論：府中市議会会議録検索システム（引用は著作権法第40条第1項および第32条に基づく）</li>
+
+</ul>
+<div class="disclaimer">
+本資料は公開情報に基づく政務調査資料であり、府中市および各市の公式見解を示すものではありません。
+数値は原則として条例本文（令和7年度時点）に基づきますが、改定時期のずれ・運用実態の差により
+実際の支給額とは異なる場合があります。「未確認」と表示した項目は一次情報で確認できなかったものです。
+本資料は判断材料の提示にとどめ、特定の結論・主張を示すものではありません。
+</div>
+</footer>
+</body>
+</html>

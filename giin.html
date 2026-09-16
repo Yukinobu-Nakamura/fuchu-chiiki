@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>府中市 議員報酬・活動経費 比較ダッシュボード｜論点一覧</title>
+<style>
+:root{
+ --g:#558B2F; --g-d:#33691E; --g-l:#8BC34A; --accent:#2E9E6B;
+ --ink:#1d2330; --muted:#6b7280; --line:#e5e7eb; --bg:#f7f8fa; --card:#fff;
+ --warn:#9b2247; --warn-bg:#fff6f8; --warn-line:#f6c9d8;
+ --cream:#fbf7ea; --gold:#e0b464;
+ --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+ color:var(--ink);background:var(--bg);line-height:1.7;word-break:break-word;overflow-wrap:anywhere}
+
+/* サイト内ページ切替タブ */
+.site-tabbar{display:flex;gap:0;background:#12202e;padding:0 4px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.site-tabbar a.site-tab{flex:0 0 auto;display:inline-block;padding:11px 20px;font-size:13.5px;font-weight:700;
+  color:#b9c6d1;text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap}
+.site-tabbar a.site-tab.is-active{color:#fff;border-bottom-color:#f2b705;background:rgba(255,255,255,.06)}
+.site-tabbar a.site-tab:hover{color:#fff;background:rgba(255,255,255,.08)}
+@media (max-width:600px){.site-tabbar a.site-tab{padding:10px 14px;font-size:12.5px}}
+
+header.hero{background:linear-gradient(100deg,var(--g),var(--g-d));color:#fff;padding:24px 26px 20px}
+header.hero .bc{font-size:12px;opacity:.9;margin-bottom:8px}
+header.hero .bc a{color:#e7f5d8;text-decoration:none;font-weight:700}
+header.hero .bc a:hover{text-decoration:underline}
+header.hero h1{margin:0;font-size:23px;font-weight:800;letter-spacing:.02em;line-height:1.45}
+header.hero .sub{opacity:.93;font-size:13px;margin-top:5px}
+.badge-asof{display:inline-block;background:rgba(255,255,255,.2);padding:3px 11px;border-radius:20px;
+ font-size:11.5px;margin-top:9px;margin-right:6px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:20px 18px 60px}
+section{margin-bottom:34px}
+h2.sec{font-size:19px;color:var(--g-d);border-left:6px solid var(--g);padding-left:12px;margin:0 0 14px}
+h3.sub{font-size:15px;color:var(--g-d);margin:22px 0 8px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+ padding:16px 18px;box-shadow:0 1px 2px rgba(20,20,40,.04)}
+.chart-card{margin-bottom:16px}
+.chart-card h3{margin:0 0 2px;font-size:15px;color:var(--ink)}
+.chart-card .cap{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+svg{width:100%;height:auto;display:block;font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:9px 14px;margin-top:9px;font-size:11.5px}
+.legend span{display:inline-flex;align-items:center;gap:5px;color:#444}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+.grid{display:grid;gap:14px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+.kpi .lab{font-size:11.5px;color:var(--muted);font-weight:700}
+.kpi .val{font-size:25px;font-weight:800;margin-top:2px;color:var(--g-d);line-height:1.25}
+.kpi .val small{font-size:12px;font-weight:700;color:var(--muted)}
+.kpi .sub2{font-size:11.5px;color:var(--muted);margin-top:3px}
+.two{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--card);
+ border-radius:10px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,40,.04);margin:10px 0}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f0f4ee;color:var(--g-d);font-weight:700;white-space:nowrap}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.me td{background:#f1f8e9;font-weight:700}
+tr.me td:first-child{color:var(--g-d)}
+td.na{color:var(--muted);font-style:italic}
+.tblwrap{overflow-x:auto}
+
+/* 論点カード一覧 */
+.issue-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.issue-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+ padding:16px 18px;box-shadow:0 1px 3px rgba(20,20,40,.06);display:flex;flex-direction:column;
+ border-top:5px solid var(--g);transition:box-shadow .15s,transform .15s}
+.issue-card:hover{box-shadow:0 6px 18px rgba(20,20,40,.11);transform:translateY(-2px)}
+.issue-no{font-size:11.5px;font-weight:800;color:var(--g);letter-spacing:.06em}
+.issue-title{font-size:16px;font-weight:800;margin:3px 0 8px;color:var(--ink);line-height:1.45}
+.issue-body{font-size:13px;color:#4b5563;flex:1}
+.issue-kpi{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 4px}
+.issue-kpi span{background:#f1f8e9;color:var(--g-d);border-radius:8px;padding:5px 10px;
+ font-size:11.5px;font-weight:700}
+.issue-kpi span.warn{background:var(--warn-bg);color:var(--warn)}
+a.attach-link{display:block;margin-top:12px;border:1px solid var(--g);border-radius:9px;padding:10px;
+ font-size:12.5px;color:var(--g-d);text-align:center;text-decoration:none;font-weight:800;
+ background:#f4f9ee;transition:background .15s,color .15s}
+a.attach-link:hover{background:var(--g);color:#fff}
+
+/* 注記ボックス */
+.note{background:var(--cream);border:1px solid var(--gold);border-radius:10px;padding:11px 15px;
+ font-size:12.5px;color:#6b5618;margin:12px 0}
+.note b{color:#a8730f}
+.insight{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn);
+ border-radius:10px;padding:11px 14px;font-size:12.5px;margin:12px 0}
+.banner{background:#f2fbf6;border:1px solid #bfe6d1;color:#12603f;border-radius:10px;
+ padding:10px 14px;font-size:12.5px;margin-bottom:14px}
+.opt{background:#fff;border:1px solid var(--line);border-left:4px solid var(--g);border-radius:0 10px 10px 0;
+ padding:11px 15px;margin:9px 0;font-size:13px}
+.opt b{color:var(--g-d)}
+.quote{background:#f8faf6;border-left:3px solid var(--g-l);border-radius:0 8px 8px 0;
+ padding:10px 13px;margin:9px 0;font-size:12.5px;color:#374151}
+.quote .meta{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:700}
+.quote .src{font-size:10.5px;color:#9aa1ac;margin-top:5px;word-break:break-all}
+
+/* 二値チップ */
+.chipwrap{display:flex;flex-wrap:wrap;gap:7px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:9px;padding:6px 11px;
+ font-size:11.5px;border:1px solid var(--line);background:#fff}
+.chip b{font-weight:800;font-size:11px}
+.chip.yes{background:#fff6f8;border-color:var(--warn-line);color:var(--warn)}
+.chip.no{background:#f2fbf6;border-color:#bfe6d1;color:#12603f}
+.chip.unk{background:#f6f7f9;color:var(--muted);font-style:italic}
+.chip.me{outline:2.5px solid var(--g);outline-offset:1px;font-weight:800}
+
+footer{max-width:1180px;margin:8px auto 40px;padding:0 18px;color:var(--muted);font-size:11.5px;line-height:1.9}
+footer h5{font-size:12.5px;color:var(--g-d);margin:16px 0 6px}
+footer ul{margin:0;padding-left:16px}
+footer li{margin-bottom:4px;word-break:break-all}
+footer a{color:var(--g)}
+.disclaimer{max-width:1180px;margin:16px auto 0;font-size:11.5px;color:var(--warn);
+ background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:10px;padding:12px 15px}
+.backtop{display:inline-block;margin-top:20px;font-size:12.5px;font-weight:800;color:var(--g-d);
+ text-decoration:none;border:1px solid var(--g);border-radius:9px;padding:9px 18px;background:#f4f9ee}
+.backtop:hover{background:var(--g);color:#fff}
+</style>
+</head>
+<body>
+<nav class="site-tabbar" aria-label="サイト内ページ切替">
+<a class="site-tab" href="./">📋 地域課題マップ</a>
+<a class="site-tab" href="./zaisei.html">📊 財政ダッシュボード</a>
+<a class="site-tab is-active" href="./giin.html">💴 議員報酬・活動経費</a>
+</nav>
+<header class="hero">
+<h1>府中市 議員報酬・活動経費 比較ダッシュボード</h1>
+<div class="sub">議員個人の収入と活動経費を、東京都26市／デジタル庁 類似団体16市と比較する</div>
+<span class="badge-asof">作成日：2026-09-16</span>
+<span class="badge-asof">政務調査資料・公開情報ベース</span>
+<span class="badge-asof">_C1</span>
+</header>
+<div class="wrap">
+
+<section>
+<h2 class="sec">まず押さえたいこと ─ 答えは「誰と比べるか」で変わる</h2>
+<div class="insight" style="font-size:13.5px">
+府中市の議員報酬・活動経費は、<b>東京都26市の中では上位</b>ですが、
+<b>全国の類似団体16市の中では中位</b>です。政務活動費にいたっては、
+26市平均（26,788円）の約1.7倍である一方、
+類似団体16市の平均（48,422円）は下回ります。<br>
+<b>「高い／安い」という評価は、比較相手の選び方でほぼ決まってしまう</b>
+── これが本資料を読むうえで最初に押さえるべき点です。
+</div>
+<div class="tblwrap"><table>
+<thead><tr><th>指標</th><th>府中市</th><th>東京都26市での位置</th>
+<th>類似団体16市での位置</th></tr></thead>
+<tbody><tr><td><b>議員報酬 月額</b></td><td class="num">550,000円</td><td class="num"><b>4</b> / 26位<br><small>同額5市</small><br><small>平均 509,538円</small><br><small>↑高い側</small></td><td class="num"><b>8</b> / 16位<br><small>同額3市</small><br><small>平均 540,375円</small><br><small>中位</small></td></tr><tr><td><b>年収概算（報酬＋期末手当）</b></td><td class="num">9,834,000円</td><td class="num"><b>4</b> / 26位<br><small>同額4市</small><br><small>平均 8,945,633円</small><br><small>↑高い側</small></td><td class="num"><b>6</b> / 16位<br><small>同額3市</small><br><small>平均 9,412,485円</small><br><small>中位</small></td></tr><tr><td><b>政務活動費 月額</b></td><td class="num">45,000円</td><td class="num"><b>4</b> / 26位<br><small>同額2市</small><br><small>平均 26,788円</small><br><small>↑高い側</small></td><td class="num"><b>8</b> / 16位<br><small>平均 48,422円</small><br><small>中位</small></td></tr><tr><td><b>公費総額（年・1人あたり）</b></td><td class="num">10,374,000円</td><td class="num"><b>5</b> / 26位<br><small>平均 9,267,094円</small><br><small>↑高い側</small></td><td class="num"><b>7</b> / 16位<br><small>平均 9,993,548円</small><br><small>中位</small></td></tr></tbody></table></div>
+<p style="font-size:11.5px;color:var(--muted)">
+東京都26市は「同じ都・同じ制度環境の中での横並び」、類似団体16市は
+「人口・高齢化率・財政力が近い全国の団体との比較」です。どちらが正しいというものではなく、
+<b>2つとも見ないと位置づけを誤る</b>という関係にあります。</p>
+</section>
+<section>
+<h2 class="sec">この資料について</h2>
+<div class="banner">
+府中市議会議員の <b>①個人の収入（議員報酬・期末手当・役職に伴う上乗せ）</b> と
+<b>②活動のための経費（政務活動費・費用弁償）</b> を、
+<b>東京都26市</b>（同一制度環境での横並び）と
+<b>デジタル庁「経済・財政・人口と暮らし」の類似団体16市</b>（全国の人口・財政規模が近い団体）の
+2つの母集団で比較した政策検討資料です。
+</div>
+<div class="grid kpis">
+<div class="card kpi"><div class="lab">議員報酬（月額）</div>
+ <div class="val">550,000<small> 円</small></div>
+ <div class="sub2">東京都26市中 <b>4位</b>／類似団体16中 <b>8位</b></div></div>
+<div class="card kpi"><div class="lab">期末手当（年間）</div>
+ <div class="val">4.90<small> か月</small></div>
+ <div class="sub2">東京都人事委員会勧告に連動</div></div>
+<div class="card kpi"><div class="lab">政務活動費（月額）</div>
+ <div class="val">45,000<small> 円</small></div>
+ <div class="sub2">東京都26市中 <b>4位</b>／26市平均 26,788円</div></div>
+<div class="card kpi"><div class="lab">議員定数</div>
+ <div class="val">30<small> 人</small></div>
+ <div class="sub2">議員1人あたり 8,739人</div></div>
+</div>
+<div class="note">
+<b>類似団体16市の抽出条件</b>（デジタル庁ダッシュボードが自治体情報から自動設定）：
+自治体区分＝<b>一般市（15万人以上）</b>／高齢化率（65歳以上の割合）＝<b>35%未満</b>／財政力指数＝<b>1.0以上</b>。
+この条件で選ばれた16団体のうち、府中市は人口総数（住民基本台帳2025・262,162人）で<b>5位</b>。
+16団体には東京都内の5市（府中・調布・三鷹・立川・武蔵野）が含まれるため、
+2つの母集団は一部重なります。
+</div>
+<div class="note">
+<b>「役職手当」について</b>：地方議会には「役職手当」という名目の手当は通常ありません。
+役職に応じた上乗せは ①議長・副議長の<b>報酬月額そのもの</b>を高く設定する
+②<b>期末手当の役職加算率</b>を上乗せする — の2つの形で実現されます（論点3で扱います）。
+</div>
+</section>
+
+<section>
+<h2 class="sec">論点一覧</h2>
+<p style="font-size:13px;color:var(--muted)">
+各カードをクリックすると論点ごとの詳細ページに移動します。詳細ページの先頭から論点一覧に戻れます。<br>
+本資料は<b>事実と取りうる選択肢の提示にとどめ、結論は示していません</b>。
+</p>
+<div class="issue-grid">
+<div class="issue-card">
+<div class="issue-no">論点 1　|　収入</div>
+<div class="issue-title">議員報酬の月額水準</div>
+<div class="issue-body"><b>問い：</b>府中市の議員報酬は、高いのか安いのか。<br>議員が毎月受け取る「議員報酬」の月額を、東京都26市と、デジタル庁が示す全国の類似団体16市で並べる。報酬は期末手当（ボーナス）の算定根拠にもなるため、ここが動くと年収全体が動く。…</div>
+<div class="issue-kpi"><span>26市中 4/26位</span><span>類似団体中 8/16位</span></div>
+<a class="attach-link" href="./giin_ronten01.html">📄 論点1 詳細を開く →</a>
+</div><div class="issue-card">
+<div class="issue-no">論点 2　|　収入</div>
+<div class="issue-title">期末手当（ボーナス）と支給月数</div>
+<div class="issue-body"><b>問い：</b>ボーナスは誰がどう決めているのか。<br>期末手当は「報酬月額 × 支給月数」で決まる。府中市では東京都人事委員会勧告に連動して一般職と同じ幅で改定する運用が続いており、報酬本体を審議する特別職報酬等審議会の審議対象には入っていない。つまり報酬を据え置いても、ボ…</div>
+<div class="issue-kpi"><span>26市中 1/26位</span><span>類似団体中 1/16位</span></div>
+<a class="attach-link" href="./giin_ronten02.html">📄 論点2 詳細を開く →</a>
+</div><div class="issue-card">
+<div class="issue-no">論点 3　|　収入</div>
+<div class="issue-title">議長・副議長・委員長の格差構造</div>
+<div class="issue-body"><b>問い：</b>「役職手当」は、どこに隠れているのか。<br>地方議会には「役職手当」という名目の手当は通常存在しない。役職に応じた上乗せは、①議長・副議長の報酬月額そのものを高く設定する ②期末手当に役職加算率を上乗せする — の2つの形で実現される。ここでは議員を100としたと…</div>
+<div class="issue-kpi"><span>26市中 5/26位</span><span>類似団体中 12/16位</span></div>
+<a class="attach-link" href="./giin_ronten03.html">📄 論点3 詳細を開く →</a>
+</div><div class="issue-card">
+<div class="issue-no">論点 4　|　収入</div>
+<div class="issue-title">年収ベースの総額比較</div>
+<div class="issue-body"><b>問い：</b>月額だけを見ていると、何を見落とすか。<br>議員報酬の月額だけで比べると、期末手当の支給月数や役職加算の差が消えてしまう。ここでは「報酬月額×12 ＋ 期末手当」で年収概算を試算し、月額順位と年収順位がどれだけ入れ替わるかを見る。…</div>
+<div class="issue-kpi"><span>26市中 4/26位</span><span>類似団体中 6/16位</span></div>
+<a class="attach-link" href="./giin_ronten04.html">📄 論点4 詳細を開く →</a>
+</div><div class="issue-card">
+<div class="issue-no">論点 5　|　経費</div>
+<div class="issue-title">政務活動費の水準</div>
+<div class="issue-body"><b>問い：</b>調査活動の費用は、活動量に見合っているか。<br>政務活動費は議員報酬とは別に、調査研究・広報・研修等のために交付される公費。府中市は1人あたり月額4万5,000円で、市の説明によれば26市平均（約2万6,000円）を大きく上回る。2024年11月には月額5,000円の…</div>
+<div class="issue-kpi"><span>26市中 4/26位</span><span>類似団体中 8/16位</span></div>
+<a class="attach-link" href="./giin_ronten05.html">📄 論点5 詳細を開く →</a>
+</div><div class="issue-card">
+<div class="issue-no">論点 6　|　経費</div>
+<div class="issue-title">費用弁償（会議出席の日当・公務旅費）</div>
+<div class="issue-body"><b>問い：</b>議会に出席することへの日当は、まだ残っているのか。<br>費用弁償とは、議員の職務に伴う実費を補填する制度で、(a) 本会議・委員会への出席そのものに支給する日当 と (b) 公務出張・行政視察の旅費 の2つに分かれる。(a) はかつて多くの市にあったが、「報酬に含まれるべき」…</div>
+<div class="issue-kpi"></div>
+<a class="attach-link" href="./giin_ronten06.html">📄 論点6 詳細を開く →</a>
+</div><div class="issue-card">
+<div class="issue-no">論点 7　|　経費</div>
+<div class="issue-title">議員1人あたり人口と定数</div>
+<div class="issue-body"><b>問い：</b>議員の数は、市民の数に見合っているか。<br>議員定数は議員報酬・政務活動費の総額を決める乗数でもある。1人あたりの額が平均並みでも定数が多ければ総額は膨らみ、逆もある。ここでは「議員1人あたりの人口」で、住民代表としての密度を比較する。数値が大きいほど議員1人が背…</div>
+<div class="issue-kpi"><span>26市中 3/26位</span><span>類似団体中 5/16位</span></div>
+<a class="attach-link" href="./giin_ronten07.html">📄 論点7 詳細を開く →</a>
+</div><div class="issue-card">
+<div class="issue-no">論点 8　|　総括</div>
+<div class="issue-title">議員1人にかかる公費の総額</div>
+<div class="issue-body"><b>問い：</b>結局、議員1人に年間いくらかかっているのか。<br>ここまでの要素（議員報酬・期末手当・政務活動費）を合算し、議員1人あたりに年間いくらの公費が充てられているかを試算する。費用弁償は市ごとに制度の有無が違い、実績額も公表粒度が揃わないため、この合算には含めていない。…</div>
+<div class="issue-kpi"><span>26市中 5/26位</span><span>類似団体中 7/16位</span></div>
+<a class="attach-link" href="./giin_ronten08.html">📄 論点8 詳細を開く →</a>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="sec">母集団一覧</h2>
+<div class="grid two">
+<div class="card"><h3 style="margin:0 0 8px;font-size:14.5px">東京都26市</h3>
+<div style="font-size:12.5px;color:#4b5563">八王子市・立川市・武蔵野市・三鷹市・青梅市・府中市・昭島市・調布市・町田市・小金井市・小平市・日野市・東村山市・国分寺市・国立市・福生市・狛江市・東大和市・清瀬市・東久留米市・武蔵村山市・多摩市・稲城市・羽村市・あきる野市・西東京市</div></div>
+<div class="card"><h3 style="margin:0 0 8px;font-size:14.5px">類似団体16市（デジタル庁）</h3>
+<div style="font-size:12.5px;color:#4b5563">市川市(千葉)・藤沢市(神奈川)・四日市市(三重)・市原市(千葉)・府中市(東京)・つくば市(茨城)・富士市(静岡)・調布市(東京)・厚木市(神奈川)・三鷹市(東京)・安城市(愛知)・立川市(東京)・鎌倉市(神奈川)・浦安市(千葉)・刈谷市(愛知)・武蔵野市(東京)</div></div>
+</div>
+</section>
+
+</div>
+<footer>
+<h5>出典</h5>
+<ul>
+<li>各市の例規集（議会の議員の議員報酬、費用弁償及び期末手当に関する条例／政務活動費の交付に関する条例）。府中市は「府中市議会議員の議員報酬及び費用弁償等に関する条例」。各数値の出典URLは論点詳細ページの表に個別記載。</li>
+<li>類似団体の区分：デジタル庁「経済・財政・人口と暮らし」ダッシュボード（自治体区分＝一般市(15万人以上)／高齢化率35%未満／財政力指数1.0以上、16団体）。人口は住民基本台帳2025。</li>
+<li>府中市議会の議論：府中市議会会議録検索システム（引用は著作権法第40条第1項および第32条に基づく）</li>
+
+</ul>
+<div class="disclaimer">
+本資料は公開情報に基づく政務調査資料であり、府中市および各市の公式見解を示すものではありません。
+数値は原則として条例本文（令和7年度時点）に基づきますが、改定時期のずれ・運用実態の差により
+実際の支給額とは異なる場合があります。「未確認」と表示した項目は一次情報で確認できなかったものです。
+本資料は判断材料の提示にとどめ、特定の結論・主張を示すものではありません。
+</div>
+</footer>
+</body>
+</html>
